@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String         @id @default(cuid())
+  firstName           String?
+  lastName            String?
+  username            String?        
+  photoUrl            String?        
+  isBot               Boolean?       @default(false) 
+  isPremium           Boolean?       @default(false) 
+  languageCode        String?        
+  allowsWriteToPm     Boolean?       @default(false) 
+  addedToAttachmentMenu Boolean?     @default(false) 
+  walletAddress       String?
+  telegramHandle      String?
+  telegramId          BigInt         @unique
+  birthdate           DateTime?
+  tokenBalance        Float          @default(1000)
+  lastPeriodDate      DateTime?   // TODO: delete it
+  menstruations       Menstruation[]
+  invitationsSent     Invitation[]   @relation("Inviter")
+  invitationsReceived Invitation[]   @relation("Invitee")
+  socialMedia         SocialMedia[]
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  farming             FarmingSession[]
+  balanceHistory      BalanceHistory[]
+  userChallenges      UserChallenge[]
+
+  @@index([telegramId], name: "telegramId_index")
+}
+
+model BalanceHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  amount    Float
+  reason    String
+  refLink   String?
+  timestamp DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model UserChallenge {
+  id        String   @id @default(cuid())
+  userId    String
+  challengeId String
+  completed Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, challengeId])
+}
+
+
+model FarmingSession {
+  id            String   @id @default(cuid())
+  userId        String
+  timeFinish    DateTime
+  totalReward   Float
+  prizeReceived Boolean  @default(false) // Short name for prize received indicator
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+
+
+
+model Menstruation {
+  id        String   @id @default(cuid())
+  date      DateTime
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Invitation {
+  id        String   @id @default(cuid())
+  inviterId String
+  inviteeId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  invitee   User?    @relation("Invitee", fields: [inviteeId], references: [id])
+  inviter   User     @relation("Inviter", fields: [inviterId], references: [id])
+}
+
+model SocialMedia {
+  id        String   @id @default(cuid())
+  platform  String
+  handle    String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+}
