@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CardWithMenu from '@/components/ui/CardWithMenu';
-import RewardText from '@/components/ui/RewardText';
+import CardWithMenu from '@/components/ui2/CardWithMenu';
+import RewardText from '@/components/ui2/RewardText';
 
 const handleClick = () => {
   console.log('MenuItem clicked');

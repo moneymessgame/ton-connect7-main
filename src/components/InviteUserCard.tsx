@@ -1,10 +1,10 @@
 import React from 'react';
 
-import RewardText from '@/components/ui/RewardText';
+import RewardText from '@/components/ui2/RewardText';
 
-import Button from './ui/Button';
-import Card from './ui/Card';
-import Coin from './ui/Coin';
+import Button from './ui2/Button';
+import Card from './ui2/Card';
+import Coin from './ui2/Coin';
 
 const InviteFriends: React.FC = () => {
   return (

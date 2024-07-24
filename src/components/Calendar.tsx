@@ -2,9 +2,9 @@ import { useTranslations } from 'next-intl';
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 import Loader from '@/components/Loader';
-import Button from '@/components/ui/Button';
-import CalendarNumber from '@/components/ui/CalendarNumber';
-import HorizontalButton from '@/components/ui/HorizontalButton';
+import Button from '@/components/ui2/Button';
+import CalendarNumber from '@/components/ui2/CalendarNumber';
+import HorizontalButton from '@/components/ui2/HorizontalButton';
 import { useUser } from '@/contexts/UserContext';
 import { isUseTon } from '@/hooks/useTelegramStorage';
 import {

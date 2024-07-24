@@ -1,7 +1,7 @@
 import { LucideIcon } from 'lucide-react';
 import React from 'react';
 
-import Card from '@/components/ui/Card';
+import Card from '@/components/ui2/Card';
 
 interface FeatureSectionProps {
   icon: LucideIcon;
