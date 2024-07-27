@@ -1,37 +1,54 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
+import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import withMiddleware from '@/utils/withMiddleware';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'GET') {
-    try {
-      const invitations = await prisma.invitation.findMany({
-        include: {
-          inviter: true,
-          invitee: true,
-        },
-      });
-      res.status(200).json(invitations);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  } else if (req.method === 'POST') {
-    const { inviterId, inviteeId } = req.body;
-    try {
-      const newInvitation = await prisma.invitation.create({
-        data: {
-          inviterId,
-          inviteeId,
-        },
-      });
-      res.status(201).json(newInvitation);
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  } else {
-    res.status(405).end(); // Method Not Allowed
+export async function GET() {
+  try {
+    const invitations = await prisma.invitation.findMany({
+      include: {
+        inviter: true,
+        invitee: true,
+      },
+    });
+    return NextResponse.json(invitations);
+  } catch (error) {
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
-};
+}
 
-export default withMiddleware(handler);
+export async function POST(request: NextRequest) {
+  const { inviterId, inviteeId } = await request.json();
+
+  try {
+    // Создаем запись о приглашении
+    const newInvitation = await prisma.invitation.create({
+      data: {
+        inviterId,
+        inviteeId,
+      },
+    });
+
+    // Обновляем связи у пользователей
+    await prisma.user.update({
+      where: { telegramId: BigInt(inviterId) },
+      data: {
+        invitationsSent: {
+          connect: { id: newInvitation.id },
+        },
+      },
+    });
+
+    await prisma.user.update({
+      where: { telegramId: BigInt(inviteeId) },
+      data: {
+        invitationsReceived: {
+          connect: { id: newInvitation.id },
+        },
+      },
+    });
+
+    return NextResponse.json(newInvitation, { status: 201 });
+  } catch (error) {
+    console.error('Error creating invitation:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}

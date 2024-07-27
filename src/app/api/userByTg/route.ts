@@ -4,8 +4,7 @@ import { serializeUser } from '@/lib/serializeUser';
 import withMiddleware from '@/utils/withMiddleware';
 
 // Обработчик GET-запросов
-export async function GET (req: NextRequest) {
-
+export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const telegramId = searchParams.get('telegramId');
 
@@ -27,7 +26,6 @@ export async function GET (req: NextRequest) {
     if (user) {
       return NextResponse.json(serializeUser(user), { status: 200 });
     } else {
-      console.log("error 404")
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
   } catch (error) {
@@ -38,10 +36,17 @@ export async function GET (req: NextRequest) {
 
 // Обработчик POST-запросов
 export async function POST(req: NextRequest) {
-
-  const { telegramId, ...rest } = await req.json();
+  const { telegramId, inviterTelegramId, ...rest } = await req.json();
 
   try {
+    const existingUser = await prisma.user.findUnique({
+      where: { telegramId: BigInt(telegramId) },
+    });
+
+    if (existingUser) {
+      return NextResponse.json({ error: 'A user with this telegramId already exists' }, { status: 409 });
+    }
+
     const newUser = await prisma.user.create({
       data: {
         telegramId: BigInt(telegramId),
@@ -50,10 +55,25 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // Если указан реферальный ID, добавляем запись в таблицу Invitation
+    if (inviterTelegramId) {
+      const inviter = await prisma.user.findUnique({
+        where: { telegramId: BigInt(inviterTelegramId) },
+      });
+
+      if (inviter) {
+        await prisma.invitation.create({
+          data: {
+            inviterId: inviter.id,
+            inviteeId: newUser.id,
+          },
+        });
+      }
+    }
+
     return NextResponse.json(serializeUser(newUser), { status: 201 });
   } catch (error: any) {
     if (error.code === 'P2002') {
-      //console.log(error)
       return NextResponse.json({ error: 'A user with this telegramId already exists' }, { status: 409 });
     }
     console.error('Error creating user:', error);
@@ -62,7 +82,7 @@ export async function POST(req: NextRequest) {
 }
 
 // Обработчик PATCH-запросов
-export async function PATCH (req: NextRequest) {
+export async function PATCH(req: NextRequest) {
   const { walletAddress, telegramId, ...rest } = await req.json();
 
   try {
@@ -77,5 +97,3 @@ export async function PATCH (req: NextRequest) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
-

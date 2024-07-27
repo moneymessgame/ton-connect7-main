@@ -12,12 +12,12 @@ const ReferralHandler: React.FC = () => {
 
   useEffect(() => {
     const registerReferral = async () => {
-      const inviterTelegramId = searchParams.get('start');
-      if (inviterTelegramId && user) {
+      const inviterId = searchParams.get('start');
+      if (inviterId && user) {
         try {
           const response = await axios.post('/api/invitation', {
-            inviterTelegramId,
-            inviteeTelegramId: user.telegramId.toString(), // Используем реального пользователя
+            inviterId,
+            inviteeId: user.telegramId.toString(),
           });
 
           console.log('Invitation created:', response.data);
