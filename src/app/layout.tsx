@@ -14,11 +14,12 @@ import { ModalProvider } from '@/contexts/ModalContext';
 import { UserProvider } from '@/contexts/UserContext';
 
 import Navigation from "@/components/Navigation";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Telegram mini app",
+  title: "Money Mess Game",
   description: "Best app in the world",
 };
 
@@ -47,6 +48,7 @@ export default function RootLayout({
                   <ModalProvider>
                     <main className="flex min-h-screen flex-col items-center justify-between">
                       {children}
+											{/* <Toaster /> */}
                       <Navigation />
                     </main>
                   </ModalProvider>

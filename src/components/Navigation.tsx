@@ -30,12 +30,12 @@ export default function Navigation() {
 				<span className="text-xs">Tracker</span>
 			</Link>
 			<Link
-				href="/profile"
+				href="/referrals"
 				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
 				prefetch={false}
 			>
 				<User className="h-6 w-6" />
-				<span className="text-xs">Profile</span>
+				<span className="text-xs">Referrals</span>
 			</Link>
 			<Link
 				href="/settings"
