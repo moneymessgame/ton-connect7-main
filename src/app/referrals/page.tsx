@@ -1,45 +1,19 @@
+// src/app/referrals/page.tsx
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSearchParams } from 'next/navigation';
-import axios from 'axios';
 import RefLink from '@/components/RefLink';
-import { useUser } from '@/contexts/UserContext';
-
-const ReferralHandler: React.FC = () => {
-  const searchParams = useSearchParams();
-  const { user } = useUser();
-
-  useEffect(() => {
-    const registerReferral = async () => {
-      const inviterTelegramId = searchParams.get('start');
-      if (inviterTelegramId && user) {
-        try {
-          const response = await axios.post('/api/invitation', {
-            inviterTelegramId,
-            inviteeTelegramId: user.telegramId.toString(), // Используем реального пользователя
-          });
-
-          console.log('Invitation created:', response.data);
-        } catch (error) {
-          console.error('Failed to create invitation:', error);
-        }
-      }
-    };
-
-    if (searchParams.has('start')) {
-      registerReferral();
-    }
-  }, [searchParams, user]);
-
-  return <div>Handling referral...</div>;
-};
+import ReferralsList from '@/components/ReferralsList';
 
 const Referrals: React.FC = () => {
+  const searchParams = useSearchParams();
+  const telegramId = searchParams.get('telegramId') || ''; // Получаем telegramId из URL параметров
+
   return (
     <div>
       <RefLink />
-      <ReferralHandler />
+      <ReferralsList telegramId={telegramId} /> {/* Передаем telegramId */}
     </div>
   );
 };

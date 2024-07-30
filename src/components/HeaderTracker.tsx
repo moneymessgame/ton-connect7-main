@@ -9,9 +9,9 @@ import {
   CalendarEventButtonType,
 } from '@/utils/periodDates';
 
-import MiniCalendar from './MiniCalendar';
-import Button from './ui2/Button';
-import { useModal } from '../contexts/ModalContext';
+import MiniCalendar from '@/components/MiniCalendar';
+import Button from '@/components/ui2/Button';
+import { useModal } from '@/contexts/ModalContext';
 
 type HeaderSectionProps = {
   lastMenstruationDate?: Date;

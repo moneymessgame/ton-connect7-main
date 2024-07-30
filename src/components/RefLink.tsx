@@ -2,37 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useUser } from '@/contexts/UserContext';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import axios from 'axios';
-
-interface Referral {
-  id: string;
-  firstName: string;
-  lastName: string;
-  username: string;
-}
 
 const RefLink: React.FC = () => {
   const { user, loading } = useUser();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [referrals, setReferrals] = useState<Referral[]>([]);
-  const [referralsLoading, setReferralsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchReferrals = async () => {
-      if (user) {
-        try {
-          const response = await axios.get(`/api/referrals/${user.telegramId}`);
-          setReferrals(response.data);
-        } catch (error) {
-          console.error('Failed to fetch referrals:', error);
-        } finally {
-          setReferralsLoading(false);
-        }
-      }
-    };
-
-    fetchReferrals();
-  }, [user]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -64,22 +37,6 @@ const RefLink: React.FC = () => {
           />
         </Button>
       </div>
-      <h2 className="mt-4">Referral List:</h2>
-      {referralsLoading ? (
-        <p>Loading referrals...</p>
-      ) : (
-        <ul>
-          {referrals.length === 0 ? (
-            <p>No referrals found.</p>
-          ) : (
-            referrals.map((referral) => (
-              <li key={referral.id}>
-                {referral.firstName} {referral.lastName} (@{referral.username})
-              </li>
-            ))
-          )}
-        </ul>
-      )}
     </div>
   );
 };

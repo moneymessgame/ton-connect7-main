@@ -77,13 +77,16 @@ const Farming: React.FC<object> = () => {
 
   const handleFarmingStart = async () => {
     if (!user) return;
+
+    const start = 'start'
+
     try {
-      const response = await fetch('/api/farming/start', {
+      const response = await fetch('/api/farming/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId: user.id }),
+        body: JSON.stringify({ status: start, userId: user.id }),
       });
       if (response.ok) {
         refetchFarmingSession(true); // Refresh session data

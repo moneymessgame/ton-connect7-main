@@ -13,12 +13,12 @@ import TonProvider from '@/components/providers/ton-provider';
 import { ModalProvider } from '@/contexts/ModalContext';
 import { UserProvider } from '@/contexts/UserContext';
 
-import Navigation from '@/components/Navigation';
+import Navigation from '@/components/blocks/Navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Money Mess Game',
+	title: 'Telegram mini app',
 	description: 'Best app in the world',
 };
 

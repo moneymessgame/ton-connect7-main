@@ -34,8 +34,8 @@ export const setupMockTelegramEnv = () => {
           JSON.stringify({
             id: 99281932,
             first_name: 'Andrew',
-            last_name: 'Rogou',
-            username: 'Rogou',
+						last_name: 'Rogov',
+            username: 'Rogov',
             language_code: 'en',
             is_premium: true,
             allows_write_to_pm: true,

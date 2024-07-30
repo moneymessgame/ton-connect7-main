@@ -35,7 +35,7 @@ const PeriodTracking: React.FC<PeriodTrackingProps> = ({
   const { network, wallet, address } = useTonConnect();
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-white text-gray-900">
+    <div className="flex min-h-screen flex-col items-center">
       <header className="w-full">
         <HeaderTracker
           lastMenstruationDate={lastMenstruationDate}

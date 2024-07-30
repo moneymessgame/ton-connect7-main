@@ -1,16 +1,8 @@
-'use client';
-
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+
 import { Home, Search, Settings, User } from 'lucide-react';
 
 export default function Navigation() {
-	const searchParams = useSearchParams();
-	const telegramId = searchParams.get('telegramId');
-
-	console.log('searchParams:', searchParams); // добавьте этот лог для отладки
-	console.log('telegramId:', telegramId); // добавьте этот лог для отладки
-
 	return (
 		<nav className="fixed bottom-0 left-0 right-0 z-50 flex h-14 w-full items-center justify-around bg-background border-t border-border shadow-[0_-2px_4px_rgba(0,0,0,0.05)]">
 			<Link
