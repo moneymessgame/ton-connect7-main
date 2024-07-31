@@ -2,18 +2,19 @@
 'use client';
 
 import React from 'react';
-import { useSearchParams } from 'next/navigation';
 import RefLink from '@/components/RefLink';
 import ReferralsList from '@/components/ReferralsList';
+import { useUser } from '@/contexts/UserContext';
 
 const Referrals: React.FC = () => {
-  const searchParams = useSearchParams();
-  const telegramId = searchParams.get('telegramId') || ''; // Получаем telegramId из URL параметров
+  const { user, loading } = useUser();
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
       <RefLink />
-      <ReferralsList  />
+      <ReferralsList />
     </div>
   );
 };

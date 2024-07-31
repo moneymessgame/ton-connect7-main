@@ -41,8 +41,10 @@
 // export default ReferralsList;
 
 
+
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useUser } from '@/contexts/UserContext';
+
 
 interface Invitee {
   username: string | null;
@@ -53,23 +55,21 @@ interface Referral {
 }
 
 const ReferralsList: React.FC = () => {
+  const { user } = useUser();
   const [referrals, setReferrals] = useState<Referral[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     const fetchReferrals = async () => {
+      if (!user?.id) {
+        console.error('No userId found in context.');
+        setLoading(false);
+        return;
+      }
+
       try {
-        const telegramId = searchParams.get('telegramId');
-        console.log('1000000 ЗДЕСЬ:', telegramId); // Для отладки
-
-        if (!telegramId) {
-          console.error('No telegramId provided in URL parameters.');
-          setLoading(false);
-          return;
-        }
-
-        const response = await fetch(`/api/referrals?telegramId=${telegramId}`);
+        console.log('Fetching referrals for userId:', user.id); // Для отладки
+        const response = await fetch(`/api/referrals?userId=${user.id}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
@@ -84,7 +84,7 @@ const ReferralsList: React.FC = () => {
     };
 
     fetchReferrals();
-  }, [searchParams]);
+  }, [user]);
 
   if (loading) return <div>Loading...</div>;
 

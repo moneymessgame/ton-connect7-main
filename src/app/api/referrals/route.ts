@@ -69,10 +69,10 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-async function getReferralsByTelegramId(telegramId: string) {
+async function getReferralsByUserId(userId: string) {
   try {
     const userWithReferrals = await prisma.user.findUnique({
-      where: { id: telegramId },
+      where: { id: userId },
       include: {
         invitationsSent: {
           include: {
@@ -84,13 +84,12 @@ async function getReferralsByTelegramId(telegramId: string) {
 
     if (!userWithReferrals) return [];
 
-    // Преобразование BigInt в строку
     return userWithReferrals.invitationsSent.map((invitation) => ({
       ...invitation,
       invitee: invitation.invitee
         ? {
             ...invitation.invitee,
-            telegramId: invitation.invitee.telegramId.toString(), // Преобразуем BigInt в строку
+            telegramId: invitation.invitee.telegramId.toString(),
           }
         : null,
     }));
@@ -105,14 +104,14 @@ async function getReferralsByTelegramId(telegramId: string) {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const telegramId = searchParams.get('telegramId');
-    console.log('001 ЗДЕСЬ:', telegramId);
+    const userId = searchParams.get('userId'); // Используем userId вместо telegramId
+    console.log('001 ЗДЕСЬ:', userId);
 
-    if (!telegramId) {
-      return NextResponse.json({ error: 'Missing telegramId parameter' }, { status: 400 });
+    if (!userId) {
+      return NextResponse.json({ error: 'Missing userId parameter' }, { status: 400 });
     }
 
-    const data = await getReferralsByTelegramId(telegramId);
+    const data = await getReferralsByUserId(userId); // Используем функцию getReferralsByUserId
     console.log('002 ЗДЕСЬ:', data);
     const referrals = data.map((invitation) => invitation.invitee?.username);
     console.log('003 ЗДЕСЬ:', referrals);
@@ -122,3 +121,4 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+
