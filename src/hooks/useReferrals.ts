@@ -60,6 +60,7 @@ const useReferrals = (telegramId: string) => {
       fetchReferrals();
     }
   }, [telegramId]);
+	console.log('Referrals from hook:', referrals); // Должен отображать массив с данными
 
   return { referrals, loading, error };
 };

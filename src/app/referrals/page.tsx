@@ -13,7 +13,7 @@ const Referrals: React.FC = () => {
   return (
     <div>
       <RefLink />
-      <ReferralsList telegramId={telegramId} /> {/* Передаем telegramId */}
+      <ReferralsList  />
     </div>
   );
 };
