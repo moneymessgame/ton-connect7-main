@@ -1,24 +1,24 @@
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 
 export async function updateBalance(
-  userId: string,
-  amount: number,
-  reason: string,
-  refLink?: string
+	userId: string,
+	amount: number,
+	reason: string,
+	refLink?: string
 ) {
-  const user = await prisma.user.update({
-    where: { id: userId },
-    data: { tokenBalance: { increment: amount } },
-  });
+	const user = await prisma.user.update({
+		where: { id: userId },
+		data: { tokenBalance: { increment: amount } },
+	});
 
-  await prisma.balanceHistory.create({
-    data: {
-      userId,
-      amount,
-      reason,
-      refLink,
-    },
-  });
+	await prisma.balanceHistory.create({
+		data: {
+			userId,
+			amount,
+			reason,
+			refLink,
+		},
+	});
 
-  return user;
+	return user;
 }

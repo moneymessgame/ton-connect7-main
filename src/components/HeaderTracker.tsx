@@ -67,7 +67,7 @@ const HeaderTracker: React.FC<HeaderSectionProps> = ({
           <p className={`${nextEvent.pregnancyChanceColor} text-lg`}>
             {t(nextEvent.pregnancyChance)}
           </p>
-          <p className="text-xl text-[var(--font-dark-primary)]">{t(nextEvent.eventMessage)}</p>
+					<p className="text-xl text-black font-semibold">{t(nextEvent.eventMessage)}</p>
           {lastMenstruationDate && (
             <h2 className={`mt-2 text-5xl font-bold ${nextEvent.eventColor}`}>
               {nextEvent.daysUntilNextEvent}{' '}

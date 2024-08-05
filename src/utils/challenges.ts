@@ -19,10 +19,10 @@ const challenges: Challenge[] = [
     id: '1',
     name: 'challenges.challenge1.name',
     description: 'challenges.challenge1.description',
-    reward: 300,
-    refLink: 'https://t.me/femaleton',
-    image: '/images/femaleton.jpg',
-    chatId: '-1002238000433',
+    reward: 700,
+    refLink: 'https://t.me/moneymessgame',
+    image: '/images/coin.png',
+    chatId: '-1002233420174',
   },
   {
     id: '2',
@@ -30,7 +30,7 @@ const challenges: Challenge[] = [
     description: 'challenges.challenge2.description',
     reward: 300,
     refLink: 'https://t.me/+z3Kw2MCvEsVkNzcy',
-    image: '/images/womenshealth.jpg',
+    image: '/images/coin.png',
     chatId: '-1001620399228',
   },
   {
@@ -38,9 +38,9 @@ const challenges: Challenge[] = [
     name: 'challenges.challenge3.name',
     description: 'challenges.challenge3.description',
     reward: 300,
-    refLink: 'https://t.me/burninganna',
-    image: '/images/anna-channel.jpg',
-    chatId: '-1001661583277',
+    refLink: 'https://t.me/irine7',
+    image: '/images/coin.png',
+    chatId: '423628331',
   },
 ];
 

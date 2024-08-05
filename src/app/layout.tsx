@@ -15,6 +15,8 @@ import { UserProvider } from '@/contexts/UserContext';
 
 import Navigation from '@/components/blocks/Navigation';
 
+import { Toaster } from "@/components/ui/toaster"
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -51,6 +53,7 @@ export default function RootLayout({
 											{children}
 											<Navigation />
 										</main>
+										<Toaster />
 									</ModalProvider>
 								</UserProvider>
 							</TmaProvider>

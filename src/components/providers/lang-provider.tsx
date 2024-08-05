@@ -29,7 +29,7 @@ function LangProvider({
         if (process.env.NODE_ENV === 'production') {
         // Telegram hook for production
         axios
-            .post('/api/validate-hash', { hash: window.Telegram.WebApp.initData })
+            .post('/api/hash', { hash: window.Telegram.WebApp.initData })
             .then((response) => setIsHashValid(response.status === 200))
             .catch(() => setIsHashValid(false));
         } else {
@@ -81,7 +81,7 @@ function LangProvider({
 
 
     if (loading) {
-        return <div>Loading...</div>; // or any loading spinner/component
+        return <div className="flex min-h-screen flex-col items-center justify-between">Loading...</div>; // or any loading spinner/component
     }
 
 

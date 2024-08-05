@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import React, { useState, useEffect } from 'react';
 
-import { Button } from '@/components/ui/button';
+import Button from '@/components/ui2/Button';
 import Coin from '@/components/ui2/Coin';
 
 import styles from './FarmingTracker.module.css';
@@ -126,12 +126,12 @@ const FarmingTracker: React.FC<FarmingTrackerProps> = ({
         </div>
       </div>
       {isFarming && (
-        <Button variant="default">
+        <Button type="purple" subtype="light">
           {t('next_care_in', { time: formatTime(timeLeft) })}
         </Button>
       )}
       {!isFarming && (
-        <Button variant="default" onClick={handleStartFarming}>
+        <Button type="purple" onClick={handleStartFarming}>
           {t('get_daily_care')}
         </Button>
       )}

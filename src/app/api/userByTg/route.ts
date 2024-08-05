@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { serializeUser } from '@/lib/serializeUser';
-import withMiddleware from '@/utils/withMiddleware';
 
 // Обработчик GET-запросов
 export async function GET(req: NextRequest) {
@@ -45,6 +44,8 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
 	const { telegramId, ...rest } = await req.json();
 
+	console.log('userByTg, POST query', telegramId, rest);
+
 	try {
 		const newUser = await prisma.user.create({
 			data: {
@@ -74,6 +75,8 @@ export async function POST(req: NextRequest) {
 // Обработчик PATCH-запросов
 export async function PATCH(req: NextRequest) {
 	const { walletAddress, telegramId, ...rest } = await req.json();
+
+	console.log(walletAddress, telegramId, rest);
 
 	try {
 		const updatedUser = await prisma.user.update({

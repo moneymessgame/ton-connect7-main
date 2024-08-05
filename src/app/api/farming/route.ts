@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
 			});
 
 			const { NEXT_PUBLIC_BASE_URL, AUTH_KEY } = process.env;
-			const absoluteUrl = `${NEXT_PUBLIC_BASE_URL}/api/user/${userId}`;
+			const absoluteUrl = `${NEXT_PUBLIC_BASE_URL}/api/balance/${userId}`;
 
 			await fetch(absoluteUrl, {
 				method: 'PATCH',

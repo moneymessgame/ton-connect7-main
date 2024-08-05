@@ -49,8 +49,9 @@ const Button: React.FC<ButtonProps> = ({
       transparent: 'text-gradient-orange',
     },
     dark: {
-      primary: 'bg-[var(--font-dark-primary)] text-white',
-      secondary: 'bg-[var(--font-dark-secondary)] text-[var(--font-dark-primary)]',
+      // primary: 'bg-[var(--font-dark-primary)] text-white',
+			primary: 'bg-[var(--font-dark-primary)] text-black',
+			secondary: 'bg-[var(--font-dark-secondary)] text-black',
       white: 'bg-white text-[var(--font-dark-primary)]',
       transparent: 'bg-white text-[var(--font-dark-primary)]',
     },

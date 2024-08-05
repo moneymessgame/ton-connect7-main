@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-
 import prisma from '@/lib/prisma';
-import withMiddleware from '@/utils/withMiddleware';
 
 type Change = {
 	date: string; // Use string because dates are usually sent as strings in JSON

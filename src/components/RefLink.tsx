@@ -3,9 +3,14 @@ import { useUser } from '@/contexts/UserContext';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
+import { useToast } from "@/components/ui/use-toast"
+
+
 const RefLink: React.FC = () => {
   const { user, loading } = useUser();
   const inputRef = useRef<HTMLInputElement>(null);
+
+	const { toast } = useToast()
 
   if (loading) {
     return <p>Loading...</p>;
@@ -15,13 +20,19 @@ const RefLink: React.FC = () => {
     return <p>No user was found</p>;
   }
 
-  const referralLink = `https://t.me/mysuperpupermegabot/view/start?start=${user.telegramId}`;
+  // const referralLink = `https://t.me/mysuperpupermegabot/view?startApp=${user.telegramId}`;
+  const referralLink = `https://t.me/mysuperpupermegabot/view?startApp=clzfi1xra0000iteva28kghds`;
 
   const copyToClipboard = () => {
     if (inputRef.current) {
       inputRef.current.select();
       document.execCommand('copy');
     }
+
+		toast({
+			description: "Refferal link copied to clipboard",
+			duration: 500,
+		})
   };
 
   return (
