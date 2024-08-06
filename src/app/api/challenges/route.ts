@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
+import { updateBalance } from '@/lib/balance';
 import challenges from '@/utils/challenges';
 import { UserChallenge } from '@prisma/client';
 import { isUserSubscribed } from '@/utils/isSubscribed';
-import { updateBalance } from '@/lib/balance';
 
 export async function POST (req: NextRequest) {
 	const { userId, challengeId, telegramId } = await req.json();
@@ -26,6 +26,8 @@ export async function POST (req: NextRequest) {
 
 		const isSubscribed = await isUserSubscribed(telegramId, challenge.chatId);
 
+		console.log('Юзер подписан: ', isSubscribed);
+
 		if (!isSubscribed) {
 			return NextResponse.json({ error: 'User is not subscribed to the channel' }, { status: 400 });
 		}
@@ -45,10 +47,10 @@ export async function POST (req: NextRequest) {
 			});
 		}
 
-		await updateBalance(userId, challenge.reward, 'Challenge completed');
+		await updateBalance(userId, challenge.reward, 'Challenge completed and reward granted');
 		return NextResponse.json({ success: true }, { status: 200 });
 	} catch (error) {
-		console.error(error);
+		console.error('Error completing challenge:', error);
 		return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
 	}
 }

@@ -34,7 +34,7 @@ const Coin: React.FC<CoinProps> = ({
   return (
     <div className={classNames(baseClass, typeClasses[type], className)}>
       {type === 'white' ? (
-        <img src="/ftoken.svg" alt="coin" className={classNames('rounded-full', className)} />
+				<img src="/images/coin.png" alt="coin" className={classNames('rounded-full', className)} />
       ) : (
         <>
           <div className="absolute rounded-full" />

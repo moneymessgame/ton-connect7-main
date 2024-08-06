@@ -46,8 +46,8 @@ const PeriodTracking: React.FC<PeriodTrackingProps> = ({
         <Farming />
         <div className="mb-20 mt-6 w-full max-w-md space-y-4">
           <SubscribeChannelsCard />
-          {/*<InviteUserCard />
-          <TellAboutYourselfCard />*/}
+          {/* <InviteUserCard /> */}
+          {/* <TellAboutYourselfCard /> */}
         </div>
       </main>
     </div>

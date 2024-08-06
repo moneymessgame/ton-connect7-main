@@ -155,16 +155,16 @@
 
 "challenges": {
     "challenge1": {
-      "name": "Subscribe to FemaleTon",
-      "description": "Telegram channel with product updates and news in the Femtech sphere"
+			"name": "Subscribe to Test Channel",
+			"description": "MoneyMess Test Channel"
     },
     "challenge2": {
-      "name": "Subscribe to Women’s HealthQlub",
-      "description": "Natalia Molchanova — Author of the channel for women on managing health capital and quality of life"
+			"name": "Subscribe to MoneyMess Channel",
+			"description": "The Official MoneyMess Channel in English"
     },
     "challenge3": {
-      "name": "Subscribe to Burning Anna",
-      "description": "Co-founder of the Female TON project, product manager, talks about AI and web3"
+      "name": "Subscribe to MoneyMess Channel",
+      "description": "The Official MoneyMess Channel in Russian"
     }
   },
 

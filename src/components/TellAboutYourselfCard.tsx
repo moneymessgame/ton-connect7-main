@@ -10,13 +10,13 @@ const handleClick = () => {
 const TellAboutYourselfCard: React.FC = () => {
   const menuItems = [
     {
-      image: '/anna-channel.jpg',
+			image: '/images/avatar.png',
       title: 'malo',
       reward: '+1000',
       onClick: handleClick,
     },
     {
-      image: '/anna-channel.jpg',
+      image: '/images/avatar.png',
       title: 'Подпишись на FemaleTon и получи 2',
       reward: '+1000',
       onClick: handleClick,

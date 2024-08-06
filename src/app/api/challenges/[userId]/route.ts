@@ -22,16 +22,15 @@ async function getUserChallenges(userId: string) {
   return { challenges: allChallenges };
 }
 
-export async function GET(req: NextRequest) {
-	const { searchParams } = new URL(req.url);
-	const userId = searchParams.get('userId');
+export async function GET(req: NextRequest, { params }: { params: { userId: string } }) {
+	const userId = params.userId;
 
 	if (!userId) {
-		return NextResponse.json({ error: 'UserId is required' }, { status: 400 });
+		return NextResponse.json({ error: 'UserId is required' }, { status: 405 });
 	}
 
 	try {
-		const challenges = await getUserChallenges(userId);
+		const challenges = await getUserChallenges(String(userId));
 		return NextResponse.json(challenges, { status: 200 });
 	} catch (error) {
 		console.error('Error fetching user:', error);

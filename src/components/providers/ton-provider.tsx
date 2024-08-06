@@ -13,14 +13,13 @@ function TonProvider({
     children: ReactNode
 }>) {
     
-    console.log(process.env.NEXT_PUBLIC_TONCONNECT_MANIFEST_URL)
+    console.log(process.env.NEXT_PUBLIC_MANIFEST_URL)
 
     return (
         <TonConnectUIProvider
-            manifestUrl={`${process.env.NEXT_PUBLIC_TONCONNECT_MANIFEST_URL}`}
+            manifestUrl={`${process.env.NEXT_PUBLIC_MANIFEST_URL}`}
             actionsConfiguration={{
-                twaReturnUrl: process.env
-                .NEXT_PUBLIC_TWA_URL as ActionConfiguration["twaReturnUrl"],
+                twaReturnUrl: process.env.NEXT_PUBLIC_BASE_URL as ActionConfiguration["twaReturnUrl"],
             }}
         >
             {children}

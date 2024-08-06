@@ -153,16 +153,16 @@
 
   "challenges": {
     "challenge1": {
-      "name": "Подпишись на FemaleTon",
-      "description": "Telegram-канал проекта с апдейтами продукта и новостями в сфере Femtech"
+			"name": "Подпишись на Тестовый канал",
+			"description": "Тестовый канал MoneyMess"
     },
     "challenge2": {
-      "name": "Подпишись на Women’s HealthQlub",
-      "description": "Наталья Молчанова — Автор канала для женщин об управлении капиталом здоровья и качеством жизни"
+			"name": "Подпишись на канал MoneyMess",
+			"description": "Официальный канал MoneyMess на английском языке"
     },
     "challenge3": {
-      "name": "Подпишись на Burning Anna",
-      "description": "Сооснователь проекта Female TON, продакт-менеджер, рассказывает про AI и web3"
+      "name": "Подпишись на канал MoneyMess",
+			"description": "Официальный канал MoneyMess на русском языке"
     }
   },
 

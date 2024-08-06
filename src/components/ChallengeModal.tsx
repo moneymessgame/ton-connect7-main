@@ -37,7 +37,7 @@ const ChallengeModal: React.FC<ChallengeModalProps> = ({
     }
 
     try {
-      const response = await fetch('/api/challenges/complete', {
+      const response = await fetch('/api/challenges', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const ChallengeModal: React.FC<ChallengeModalProps> = ({
   };
 
   return (
-    <div className="p-4">
+		<div className="p-4 bg-slate-800 rounded-2xl">
       <h2 className="mb-2 px-2 text-center text-2xl font-semibold text-white">{title}</h2>
       <h3 className="mb-4 text-center text-lg font-medium text-[var(--font-blue-secondary)]">
         {description}

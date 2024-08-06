@@ -17,7 +17,7 @@ const SubscribeChannelsCard: React.FC = () => {
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        const response = await fetch(`/api/challenges?userId=${user!.id}`);
+        const response = await fetch(`/api/challenges/${user!.id}`);
         const data = await response.json();
         if (data.challenges) {
           setChallenges(data.challenges);
