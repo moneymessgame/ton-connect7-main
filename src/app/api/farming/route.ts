@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
 	const userId = searchParams.get('userId');
 
 	if (!userId) {
-		return NextResponse.json({ error: 'UserId is required' }, { status: 400 });
+		return NextResponse.json({ error: 'UserId is required' }, { status: 401 });
 	}
 
 	try {
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
 		if (!farmingSession) {
 			return NextResponse.json(
 				{ error: 'No farming session found for this user' },
-				{ status: 400 }
+				{ status: 402 }
 			);
 		}
 
