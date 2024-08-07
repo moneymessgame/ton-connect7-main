@@ -55,7 +55,7 @@ export default function Ton() {
   const updateTokenBalance = async (amount: number, reason: string) => {
     if (user && user.id) {
       try {
-        const response = await fetch(`/api/user/${user.id}/balance`, {
+        const response = await fetch(`/api/balance/${user.id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

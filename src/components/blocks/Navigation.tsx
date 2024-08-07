@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Home, Search, Settings, Coins, User } from 'lucide-react';
+import { Home, Timer, Settings, Coins, UserPlus } from 'lucide-react';
 
 export default function Navigation() {
 	return (
@@ -18,7 +18,7 @@ export default function Navigation() {
 				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
 				prefetch={false}
 			>
-				<Search className="h-6 w-6" />
+				<Timer className="h-6 w-6" />
 				<span className="text-xs">Tracker</span>
 			</Link>
 			<Link
@@ -26,7 +26,7 @@ export default function Navigation() {
 				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
 				prefetch={false}
 			>
-				<User className="h-6 w-6" />
+				<UserPlus className="h-6 w-6" />
 				<span className="text-xs">Referrals</span>
 			</Link>
 			<Link
