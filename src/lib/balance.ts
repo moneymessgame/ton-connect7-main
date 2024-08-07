@@ -20,5 +20,7 @@ export async function updateBalance(
 		},
 	});
 
+	console.log('Баланс успешно обновлен');
+
 	return user;
 }

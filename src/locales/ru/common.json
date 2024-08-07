@@ -157,11 +157,11 @@
 			"description": "Тестовый канал MoneyMess"
     },
     "challenge2": {
-			"name": "Подпишись на канал MoneyMess",
+			"name": "Подпишись на",
 			"description": "Официальный канал MoneyMess на английском языке"
     },
     "challenge3": {
-      "name": "Подпишись на канал MoneyMess",
+			"name": "Подпишись на",
 			"description": "Официальный канал MoneyMess на русском языке"
     }
   },

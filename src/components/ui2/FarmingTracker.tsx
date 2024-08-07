@@ -31,8 +31,8 @@ const FarmingTracker: React.FC<FarmingTrackerProps> = ({
   const [timeLeft, setTimeLeft] = useState(0);
   const [farmingCounter, setFarmingCounter] = useState(Math.round(tokenBalance) || 0);
   const [previousCounter, setPreviousCounter] = useState(Math.round(tokenBalance) || 0);
-  const rewardRate = 7200 / (8 * 60 * 60); // Assuming reward is 7200 for 8 hours
-  const rewardRatePerHour = 7200 / (8 * 60); // Assuming reward is 7200 for 8 hours
+  const rewardRate = 7200 / (1 * 60 * 60); // Assuming reward is 7200 for 8 hours
+  const rewardRatePerHour = 7200 / (1 * 60); // Assuming reward is 7200 for 8 hours
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -56,7 +56,7 @@ const FarmingTracker: React.FC<FarmingTrackerProps> = ({
           onFinishFarming(); // Call onFinishFarming when farming is done
           clearInterval(timer);
         } else {
-          const secondsElapsed = 8 * 60 * 60 - newTimeLeft; // 8 hours in seconds minus time left
+          const secondsElapsed = 1 * 60 * 60 - newTimeLeft; // 8 hours in seconds minus time left
           const newCounter = Math.round(tokenBalance + secondsElapsed * rewardRate);
           setPreviousCounter(farmingCounter);
           setFarmingCounter(newCounter);

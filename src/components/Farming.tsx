@@ -64,7 +64,7 @@ const Farming: React.FC<object> = () => {
     if (farmingSession) {
       const now = new Date().getTime();
       const finishTime = new Date(farmingSession.timeFinish).getTime();
-      const startTime = finishTime - 8 * 60 * 60 * 1000; // 8 hours before finish
+      const startTime = finishTime - 1 * 60 * 60 * 1000; // 8 hours before finish
       if (now < finishTime) {
         setIsFarming(true);
         setTimeStart(new Date(startTime));

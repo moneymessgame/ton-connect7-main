@@ -62,6 +62,7 @@ export default function Ton() {
           },
           body: JSON.stringify({ amount, reason }),
         });
+				console.log("БАЛАНС:", response);
 
         if (response.ok) {
           const data = await response.json();

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import prisma from '@/lib/prisma';
+import { updateBalance } from '@/lib/balance';
 
 // Обработчик GET-запросов
 export async function GET(req: NextRequest) {
@@ -16,6 +17,7 @@ export async function GET(req: NextRequest) {
 			where: { userId },
 			orderBy: { createdAt: 'desc' },
 		});
+		// console.log('ФАРМИНГ', farmingSession);
 
 		if (!farmingSession) {
 			return NextResponse.json(
@@ -23,6 +25,11 @@ export async function GET(req: NextRequest) {
 				{ status: 402 }
 			);
 		}
+
+		const sessionDone = await prisma.farmingSession.findFirst({
+			where: { userId, prizeReceived: true },
+		});
+		// console.log('Фарминг сессия завершена:', sessionDone);
 
 		const now = new Date();
 
@@ -62,8 +69,6 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
 	const { status, userId } = await req.json();
 
-	console.log(userId);
-
 	if (!userId) {
 		return NextResponse.json({ error: 'UserId is required' }, { status: 400 });
 	}
@@ -80,9 +85,10 @@ export async function POST(req: NextRequest) {
 				{ status: 400 }
 			);
 		}
+		// console.log('Существующая сессия:', existingSession);
 
 		const timeStart = new Date();
-		const timeFinish = new Date(timeStart.getTime() + 8 * 60 * 60 * 1000); // 8 hours from start
+		const timeFinish = new Date(timeStart.getTime() + 1 * 60 * 60 * 1000); // 8 hours from start
 
 		const farmingSession = await prisma.farmingSession.create({
 			data: {

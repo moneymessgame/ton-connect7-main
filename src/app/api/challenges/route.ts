@@ -8,6 +8,7 @@ import { isUserSubscribed } from '@/utils/isSubscribed';
 
 export async function POST (req: NextRequest) {
 	const { userId, challengeId, telegramId } = await req.json();
+	console.log(' Челленджи: ', userId, challengeId, telegramId);
 
 	try {
 		const challenge = challenges.find((ch) => ch.id === challengeId);
@@ -37,7 +38,7 @@ export async function POST (req: NextRequest) {
 				data: {
 					userId,
 					challengeId,
-					completed: false,
+					completed: true,
 				},
 			});
 		} else {
@@ -47,8 +48,10 @@ export async function POST (req: NextRequest) {
 			});
 		}
 
-		await updateBalance(userId, challenge.reward, 'Challenge completed and reward granted');
-		return NextResponse.json({ success: true }, { status: 200 });
+		await updateBalance(userId, challenge.reward, `${challenge.name}`, challenge.refLink);
+
+		return NextResponse.json({ success: true, message: 'Challenge completed successfully' }, { status: 200 });
+
 	} catch (error) {
 		console.error('Error completing challenge:', error);
 		return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
