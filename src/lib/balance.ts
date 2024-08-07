@@ -20,7 +20,8 @@ export async function updateBalance(
 		},
 	});
 
-	console.log('Баланс успешно обновлен');
+	console.log('Баланс успешно обновлен. Текущий баланс:', user.tokenBalance);
+	console.log('Создана запись в BalanceHistory:', { userId, amount, reason, refLink });
 
 	return user;
 }
