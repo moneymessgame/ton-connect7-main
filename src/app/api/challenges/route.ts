@@ -8,7 +8,7 @@ import { isUserSubscribed } from '@/utils/isSubscribed';
 
 export async function POST (req: NextRequest) {
 	const { userId, challengeId, telegramId } = await req.json();
-	console.log(' Челленджи: ', userId, challengeId, telegramId);
+	console.log(' complete: ', userId, challengeId, telegramId);
 
 	try {
 		const challenge = challenges.find((ch) => ch.id === challengeId);
@@ -20,6 +20,7 @@ export async function POST (req: NextRequest) {
 		const userChallenge = await prisma.userChallenge.findUnique({
 			where: { userId_challengeId: { userId, challengeId } },
 		});
+		console.log('Юзер:', userChallenge);
 
 		if (userChallenge && userChallenge.completed) {
 			return NextResponse.json({ error: 'Challenge already completed' }, { status: 400 });
@@ -58,34 +59,34 @@ export async function POST (req: NextRequest) {
 	}
 }
 
-export async function GET (req: NextRequest) {
-	const { searchParams } = new URL(req.url);
-	const userId = searchParams.get('userId');
+// export async function GET (req: NextRequest) {
+// 	const { searchParams } = new URL(req.url);
+// 	const userId = searchParams.get('userId');
 
-	if (!userId) {
-		return NextResponse.json({ error: 'UserId is required' }, { status: 400 });
-	}
+// 	if (!userId) {
+// 		return NextResponse.json({ error: 'UserId is required' }, { status: 400 });
+// 	}
 
-	try {
-		const challenges = await prisma.userChallenge.findMany({
-			where: { userId },
-			orderBy: { createdAt: 'desc' },
-		});	
+// 	try {
+// 		const challenges = await prisma.userChallenge.findMany({
+// 			where: { userId },
+// 			orderBy: { createdAt: 'desc' },
+// 		});	
 
-		const completedChallengeIds = new Set(
-			challenges
-				.filter((uc: UserChallenge) => uc.completed)
-				.map((uc: UserChallenge) => uc.challengeId)
-		);
+// 		const completedChallengeIds = new Set(
+// 			challenges
+// 				.filter((uc: UserChallenge) => uc.completed)
+// 				.map((uc: UserChallenge) => uc.challengeId)
+// 		);
 
-		const allChallenges = challenges.map((challenge) => ({
-			...challenge,
-			isCompleted: completedChallengeIds.has(challenge.challengeId),
-		}));		
+// 		const allChallenges = challenges.map((challenge) => ({
+// 			...challenge,
+// 			isCompleted: completedChallengeIds.has(challenge.challengeId),
+// 		}));		
 
-		return NextResponse.json(allChallenges, { status: 200 });
-	} catch (error) {
-		console.error('Error fetching user:', error);
-		return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-	}
-}
+// 		return NextResponse.json(allChallenges, { status: 200 });
+// 	} catch (error) {
+// 		console.error('Error fetching user:', error);
+// 		return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+// 	}
+// }
