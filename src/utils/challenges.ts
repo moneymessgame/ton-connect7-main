@@ -29,18 +29,18 @@ const challenges: Challenge[] = [
     name: 'challenges.challenge2.name',
     description: 'challenges.challenge2.description',
     reward: 450,
-    refLink: 'https://t.me/moneymesschannelru',
+    refLink: 'https://t.me/moneymesschannel',
 		image: '/images/femaleton.jpg',
-    chatId: '-1002220711086',
+    chatId: '-1002241667149',
   },
   {
     id: '3',
     name: 'challenges.challenge3.name',
     description: 'challenges.challenge3.description',
     reward: 550,
-    refLink: 'https://t.me/moneymesschannel',
+    refLink: 'https://t.me/moneymesschannelru',
 		image: '/images/femaleton.jpg',
-    chatId: '-1002241667149',
+    chatId: '-1002220711086',
   },
 ];
 
