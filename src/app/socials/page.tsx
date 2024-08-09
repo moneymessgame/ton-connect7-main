@@ -13,29 +13,36 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer';
-import ChalModal from '@/components/ChalModal';
+import MItem from '@/components/ui2/MItem';
+import SubCC from '@/components/SubCC';
 
 export default function Drawers() {
 	const t = useTranslations();
 
 	return (
-		<Drawer open>
-			<Button type="ghost">
-				<DrawerTrigger>{t('subscribe_channels_card.main_title')}</DrawerTrigger>
-			</Button>
-			<DrawerContent>
-				<DrawerHeader>
-					<DrawerTitle> {t('subscribe_channels_card.title')} </DrawerTitle>
-					<DrawerDescription> {t('subscribe_channels_card.description')} </DrawerDescription>
-					<ChalModal />
-				</DrawerHeader>
-				<DrawerFooter>
-					<Button type="ghost"> {t('subscribe_channels_card.completed')} </Button>
-					<DrawerClose>
-						<Button type="ghost"> {t('calendar.cancel')} </Button>
-					</DrawerClose>
-				</DrawerFooter>
-			</DrawerContent>
-		</Drawer>
+		<>
+			<Drawer >
+				<Button type="ghost">
+					<DrawerTrigger>
+						{t('subscribe_channels_card.main_title')}
+					</DrawerTrigger>
+				</Button>
+				<DrawerContent>
+					<DrawerHeader>
+						<DrawerTitle> {t('subscribe_channels_card.title')} </DrawerTitle>
+						<DrawerDescription>
+							{t('subscribe_channels_card.description')}{' '}
+						</DrawerDescription>
+						<SubCC />
+					</DrawerHeader>
+					<DrawerFooter>
+						{/* <Button type="ghost"> {t('subscribe_channels_card.completed')} </Button> */}
+						<DrawerClose>
+							{/* <Button type="ghost"> {t('calendar.cancel')} </Button> */}
+						</DrawerClose>
+					</DrawerFooter>
+				</DrawerContent>
+			</Drawer>
+		</>
 	);
 }
