@@ -7,6 +7,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: 'blue' | 'pink' | 'purple' | 'orange' | 'dark' | 'ghost';
   subtype?: 'primary' | 'secondary' | 'white' | 'light';
+	variant?: 'outline';
   className?: string;
 };
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Home, Timer, Coins, UserPlus } from 'lucide-react';
+import { Home, Timer, Coins, UserPlus, PanelBottomOpen } from 'lucide-react';
 
 export default function Navigation() {
 	return (
@@ -28,6 +28,14 @@ export default function Navigation() {
 			>
 				<UserPlus className="h-6 w-6" />
 				<span className="text-xs">Referrals</span>
+			</Link>
+			<Link
+				href="/socials"
+				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
+				prefetch={false}
+			>
+				<PanelBottomOpen className="h-6 w-6" />
+				<span className="text-xs">Socials</span>
 			</Link>
 			<Link
 				href="/ton"
