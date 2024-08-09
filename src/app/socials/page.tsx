@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
+import Button from '@/components/ui2/Button';
 import {
 	Drawer,
 	DrawerClose,
@@ -12,25 +13,26 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer';
-import Button from '@/components/ui2/Button';
+import ChalModal from '@/components/ChalModal';
 
 export default function Drawers() {
-	const t = useTranslations('subscribe_channels_card');
+	const t = useTranslations();
 
 	return (
-		<Drawer>
-			<DrawerTrigger>
-			Наши соцсети
-			</DrawerTrigger>
+		<Drawer open>
+			<Button type="ghost">
+				<DrawerTrigger>{t('subscribe_channels_card.main_title')}</DrawerTrigger>
+			</Button>
 			<DrawerContent>
 				<DrawerHeader>
-					<DrawerTitle> {t('title')} </DrawerTitle>
-					<DrawerDescription> {t('description')} </DrawerDescription>
+					<DrawerTitle> {t('subscribe_channels_card.title')} </DrawerTitle>
+					<DrawerDescription> {t('subscribe_channels_card.description')} </DrawerDescription>
+					<ChalModal />
 				</DrawerHeader>
 				<DrawerFooter>
-					<Button> {t('completed')} </Button>
+					<Button type="ghost"> {t('subscribe_channels_card.completed')} </Button>
 					<DrawerClose>
-						<Button variant="outline">Cancel</Button>
+						<Button type="ghost"> {t('calendar.cancel')} </Button>
 					</DrawerClose>
 				</DrawerFooter>
 			</DrawerContent>
