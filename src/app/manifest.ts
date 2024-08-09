@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Next.js App',
     start_url: '/',
     display: 'standalone',
-    background_color: '#fff',
+    background_color: '#222',
     theme_color: '#fff',
     icons: [
       {
