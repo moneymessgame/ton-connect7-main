@@ -21,28 +21,31 @@ export default function Drawers() {
 
 	return (
 		<>
-			<Drawer >
-				<Button type="ghost">
-					<DrawerTrigger>
-						{t('subscribe_channels_card.main_title')}
-					</DrawerTrigger>
-				</Button>
-				<DrawerContent>
-					<DrawerHeader>
-						<DrawerTitle> {t('subscribe_channels_card.title')} </DrawerTitle>
-						<DrawerDescription>
-							{t('subscribe_channels_card.description')}{' '}
-						</DrawerDescription>
-						<SubCC />
-					</DrawerHeader>
-					<DrawerFooter>
-						{/* <Button type="ghost"> {t('subscribe_channels_card.completed')} </Button> */}
-						<DrawerClose>
-							{/* <Button type="ghost"> {t('calendar.cancel')} </Button> */}
-						</DrawerClose>
-					</DrawerFooter>
-				</DrawerContent>
-			</Drawer>
+		<SubCC />
 		</>
 	);
 }
+
+{/* <Drawer >
+<Button type="ghost">
+	<DrawerTrigger>
+	Open	
+	</DrawerTrigger>
+</Button>
+<DrawerContent>
+	<DrawerHeader>
+		<DrawerTitle> {t('subscribe_channels_card.title')} </DrawerTitle>
+		<DrawerDescription>
+			{t('subscribe_channels_card.description')}{' '}
+		</DrawerDescription>
+		<SubCC />
+	</DrawerHeader>
+	<DrawerFooter>
+		<Button type="ghost"> {t('subscribe_channels_card.completed')} </Button> 
+		<DrawerClose>
+			<Button type="ghost"> {t('calendar.cancel')} </Button> 
+		</DrawerClose>
+	</DrawerFooter>
+</DrawerContent>
+</Drawer> 
+*/}
