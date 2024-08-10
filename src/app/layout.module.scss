@@ -1,0 +1,45 @@
+@import "@/styles/mixins";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  @include real-height;
+}
+
+.main {
+  flex: 1;
+  background: linear-gradient(var(--bg-opacity-1), var(--bg));
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  border-radius: var(--radius-1) var(--radius-1) 0 0;
+  padding: var(--main-padding);
+  padding-bottom: calc(var(--nav-height) + var(--main-padding));
+  @include no-scrollbar;
+}
+
+.toast {
+  --padding: var(--size-3);
+  background-color: var(--bg-opacity-1);
+  color: var(--white);
+  padding: var(--padding);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-primary);
+  @include backdrop(24px, false);
+
+  &[data-type="success"] {
+    --color: var(--success);
+  }
+
+  &[data-type="error"] {
+    --color: var(--danger);
+  }
+
+  [data-icon] {
+    svg {
+      fill: var(--color);
+      margin-right: calc(var(--padding) / 1.5);
+    }
+  }
+}

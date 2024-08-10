@@ -1,0 +1,35 @@
+:root {
+  --full-size: calc(100vw + 100vh);
+
+  /* Transition */
+  --transition-link: 0.3s var(--cubic);
+  --transition-scale: 0.1s;
+
+  /* Viewport */
+  --real-height: calc(var(--dvh, 1vh) * 100);
+  --real-width: calc(var(--vw, 1vw) * 100);
+
+  /* Sizes */
+  --size-1: calc(4px + 1 * (100vw - 320px) / 1080);
+  --size-2: calc(8px + 1 * (100vw - 320px) / 1080);
+  --size-3: calc(16px + 1 * (100vw - 320px) / 1080);
+  --size-4: calc(24px + 2 * (100vw - 320px) / 1080);
+  --size-5: calc(32px + 3 * (100vw - 320px) / 1080);
+  --size-6: calc(40px + 4 * (100vw - 320px) / 1080);
+  --size-7: calc(48px + 5 * (100vw - 320px) / 1080);
+
+  /* Wrapper */
+  --wrapper-width: calc(750px + 500 * (100vw - 320px) / 1080);
+  --wrapper-middle: calc(var(--wrapper-width) / 2.5);
+  --wrapper-max: 85vw;
+
+  /* Main */
+  --main-padding: calc(20px + 24 * (100vw - 320px) / 1080);
+
+  /* Radius */
+  --radius-1: var(--size-4);
+  --radius-2: var(--size-3);
+
+  /* Nav */
+  --nav-height: calc(70px + 25 * (100vw - 320px) / 1080);
+}

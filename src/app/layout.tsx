@@ -3,7 +3,10 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 
 import { Inter } from 'next/font/google';
-import './globals.css';
+
+
+import styles from "./layout.module.scss"
+import '@/styles/globals.scss';
 
 import LangProvider from '@/components/providers/lang-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -15,9 +18,20 @@ import { UserProvider } from '@/contexts/UserContext';
 
 import Navigation from '@/components/blocks/Navigation';
 
+import { Viewport } from "next"
+import { NoMobile } from '@/components/blocks/NoMobile';
+
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const viewport: Viewport = {
+	themeColor: "rgb(5, 8, 17)",
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 1,
+	userScalable: false
+}
 
 export const metadata: Metadata = {
 	title: 'Telegram mini app',
@@ -49,11 +63,15 @@ export default function RootLayout({
 							<TmaProvider>
 								<UserProvider>
 									<ModalProvider>
-										<main className="flex min-h-screen flex-col items-center justify-between">
-											{children}
-											<Navigation />
+										<main className={styles.layout}>
+											<div className={styles.main} data-ref="main">
+												{children}
+												<Navigation />
+											</div>
 										</main>
 										<Toaster />
+										<div id="modal-root" />
+										<NoMobile/>
 									</ModalProvider>
 								</UserProvider>
 							</TmaProvider>
