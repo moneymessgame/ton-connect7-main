@@ -177,5 +177,10 @@
   "telegram": {
     "start_message": "Liebe,\n\n💡 Bequem: keine separate App erforderlich\n🔒 Sicher: Daten sind mit einem Smart Contract verschlüsselt\n🌿 Intelligente: Personalisierte Empfehlungen zum Wohlbefinden basierend auf deinem Zyklus über den Bot\n\nMit Liebe, dein @femaleton Team",
     "button_text": "🌀 Tracker öffnen"
-  }
+  },
+
+	"nomobile": {
+		"title": "Leave the desktop.",
+		"txt": "Mobile gaming rocks!"
+	}
 }

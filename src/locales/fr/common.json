@@ -179,5 +179,10 @@
   "telegram": {
     "start_message": "Chère,\n\n💡 Pratique : pas besoin d'une application séparée\n🔒 Sécurisé : les données sont cryptées avec un contrat intelligent\n🌿 Intelligent : recommandations de bien-être personnalisées basées sur votre cycle via le bot\n\nAvec amour, votre équipe @femaleton",
     "button_text": "🌀 Ouvrir le tracker"
-  }
+  },
+
+	"nomobile": {
+		"title": "Leave the desktop.",
+		"txt": "Mobile gaming rocks!"
+	}
 }

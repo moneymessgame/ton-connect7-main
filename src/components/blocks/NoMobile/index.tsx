@@ -10,6 +10,8 @@ import styles from "./NoMobile.module.scss"
 
 export const NoMobile = () => {
 
+  const t = useTranslations();
+
   const onWindowResize = useCallback(() => {
     const el = document.documentElement
 
@@ -25,8 +27,8 @@ export const NoMobile = () => {
 
   return (
     <div className={clsx(styles.layer, "no-mobile-layer")}>
-      <div>title</div>
-      <p>description</p>
+      <div className={styles.title}>{t('nomobile.title')}</div>
+      <p className={styles.txt}>{t('nomobile.txt')}</p>
       <img src={`${HOST}/qr-code.gif`} alt={process.env.NEXT_PUBLIC_TWA_URL} className="qr" />
     </div>
   )

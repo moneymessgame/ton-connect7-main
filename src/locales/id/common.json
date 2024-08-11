@@ -177,5 +177,10 @@
   "telegram": {
     "start_message": "Dear,\n\n💡 Nyaman: tidak perlu aplikasi terpisah\n🔒 Aman: data dienkripsi dengan kontrak pintar\n🌿 Pintar: Rekomendasi kesejahteraan pribadi berdasarkan siklusmu melalui bot\n\nDengan cinta, tim @femaletonmu",
     "button_text": "🌀 Open Tracker"
-  }
+  },
+
+	"nomobile": {
+		"title": "Leave the desktop.",
+		"txt": "Mobile gaming rocks!"
+	}
 }

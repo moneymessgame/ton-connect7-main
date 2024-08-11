@@ -16,6 +16,9 @@ import TonProvider from '@/components/providers/ton-provider';
 import { ModalProvider } from '@/contexts/ModalContext';
 import { UserProvider } from '@/contexts/UserContext';
 
+import NextTopLoader from "nextjs-toploader";
+import Loader from "@/components/blocks/Loader"
+
 import Navigation from '@/components/blocks/Navigation';
 
 import { Viewport } from "next"
@@ -63,6 +66,13 @@ export default function RootLayout({
 							<TmaProvider>
 								<UserProvider>
 									<ModalProvider>
+										{/* <Loader /> */}
+										<NextTopLoader
+											color="var(--pink)"
+											height={2}
+											showSpinner={false}
+											zIndex={999999}
+										/>
 										<main className={styles.layout}>
 											<div className={styles.main} data-ref="main">
 												{children}
@@ -71,7 +81,7 @@ export default function RootLayout({
 										</main>
 										<Toaster />
 										<div id="modal-root" />
-										<NoMobile/>
+										{/* <NoMobile /> */}
 									</ModalProvider>
 								</UserProvider>
 							</TmaProvider>
