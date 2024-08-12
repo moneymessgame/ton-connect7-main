@@ -79,7 +79,7 @@
 
 	"subscribe_channels_card": {
 		"main_title": "Our Socials",
-		"title": "Subscribe to Channels",
+		"title": "Subscribe to our Channels",
 		"reward_text": "+ 300",
 		"description": "Earn Fem Coin and exchange it for other tokens or get discounts on consultations and much more",
 		"completed": "Completed"
@@ -88,7 +88,7 @@
 	"farming": {
 		"subscribe_card": {
 			"reward": "+300 HC",
-			"description": "Subscribe to channels"
+			"description": "Subscribe to our channels"
 		},
 		"share_card": {
 			"reward": "+600 HC",
@@ -183,5 +183,12 @@
 	"nomobile": {
 		"title": "Leave the desktop.",
 		"txt": "Mobile gaming rocks!"
+	},
+
+	"modal": {
+		"title": "Title",
+		"description": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+		"content": "Content",
+		"button": "Close"
 	}
 }

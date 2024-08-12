@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
-
 import Script from 'next/script';
-
 import { Inter } from 'next/font/google';
 
-
-import styles from "./layout.module.scss"
+import styles from './layout.module.scss';
 import '@/styles/globals.scss';
 
 import LangProvider from '@/components/providers/lang-provider';
@@ -16,25 +13,25 @@ import TonProvider from '@/components/providers/ton-provider';
 import { ModalProvider } from '@/contexts/ModalContext';
 import { UserProvider } from '@/contexts/UserContext';
 
-import NextTopLoader from "nextjs-toploader";
-import Loader from "@/components/blocks/Loader"
+import NextTopLoader from 'nextjs-toploader';
+import Loader from '@/components/blocks/Loader';
 
 import Navigation from '@/components/blocks/Navigation';
 
-import { Viewport } from "next"
+import { Viewport } from 'next';
 import { NoMobile } from '@/components/blocks/NoMobile';
 
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const viewport: Viewport = {
-	themeColor: "rgb(5, 8, 17)",
-	width: "device-width",
+	themeColor: 'rgb(5, 8, 17)',
+	width: 'device-width',
 	initialScale: 1,
 	maximumScale: 1,
-	userScalable: false
-}
+	userScalable: false,
+};
 
 export const metadata: Metadata = {
 	title: 'Telegram mini app',

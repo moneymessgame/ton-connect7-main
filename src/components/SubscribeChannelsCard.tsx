@@ -1,84 +1,121 @@
 import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 
-import ChallengeModal from '@/components/ChallengeModal';
-import CardWithMenu from '@/components/ui2/CardWithMenu';
-import RewardText from '@/components/ui2/RewardText';
-import { useModal } from '@/contexts/ModalContext';
 import { useUser } from '@/contexts/UserContext';
 import { ChallengeWithStatus } from '@/utils/challenges';
+import { X } from 'lucide-react';
+import CardWithMenu from './ui2/CardWithMenu';
+
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+} from '@/components/ui/drawer';
 
 const SubscribeChannelsCard: React.FC = () => {
-  const { user } = useUser();
-  const { openModal } = useModal();
-  const [challenges, setChallenges] = useState<ChallengeWithStatus[]>([]);
-  const t = useTranslations();
+	const { user } = useUser();
+	const [challenges, setChallenges] = useState<ChallengeWithStatus[]>([]);
+	const [selectedChallenge, setSelectedChallenge] = useState<ChallengeWithStatus | null>(null);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Состояние для открытия Drawer
+	const t = useTranslations();
 
-  useEffect(() => {
-    const fetchChallenges = async () => {
-      try {
-        const response = await fetch(`/api/challenges/${user!.id}`);
-        const data = await response.json();
-        if (data.challenges) {
-          setChallenges(data.challenges);
-        } else {
-          console.error(data.message);
-        }
-      } catch (error) {
-        console.error('Error fetching challenges:', error);
-      }
-    };
+	useEffect(() => {
+		const fetchChallenges = async () => {
+			try {
+				const response = await fetch(`/api/challenges/${user!.id}`);
+				const data = await response.json();
+				if (data.challenges) {
+					setChallenges(data.challenges);
+				} else {
+					console.error(data.message);
+				}
+			} catch (error) {
+				console.error('Error fetching challenges:', error);
+			}
+		};
 
-    if (user) {
-      fetchChallenges();
-    }
-  }, [user]);
+		if (user) {
+			fetchChallenges();
+		}
+	}, [user]);
 
-  const updateChallengeStatus = (challengeId: string) => {
-    setChallenges((prevChallenges) =>
-      prevChallenges.map((challenge) =>
-        challenge.id === challengeId ? { ...challenge, isCompleted: true } : challenge
-      )
-    );
-  };
+	const updateChallengeStatus = (challengeId: string) => {
+		setChallenges((prevChallenges) =>
+			prevChallenges.map((challenge) =>
+				challenge.id === challengeId
+					? { ...challenge, isCompleted: true }
+					: challenge
+			)
+		);
+	};
 
-  const handleOpenModal = (challenge: ChallengeWithStatus) => {
-    openModal(
-      <ChallengeModal
-        title={t(challenge.name)}
-        description={t(challenge.description)}
-        reward={challenge.reward}
-        refLink={challenge.refLink}
-        userId={user!.id}
-        challengeId={challenge.id}
-        telegramId={user!.telegramId.toString()} // Ensure telegramId is converted to string
-        onSuccess={() => updateChallengeStatus(challenge.id)}
-        isCompleted={challenge.isCompleted}
-      />
-    );
-  };
+	const handleDrawerOpen = (challenge: ChallengeWithStatus) => {
+		setSelectedChallenge(challenge);
+		setIsDrawerOpen(true); // Открываем Drawer
+	};
 
-  const menuItems = challenges.map((challenge) => ({
-    image: challenge.image,
-    title: t(challenge.description),
-    reward: challenge.isCompleted ? t('subscribe_channels_card.completed') : `+${challenge.reward}`,
-    onClick: () => handleOpenModal(challenge),
-  }));
+	const menuItems = challenges.map((challenge) => ({
+		image: challenge.image,
+		title: t(challenge.description),
+		reward: challenge.isCompleted
+			? t('subscribe_channels_card.completed')
+			: `+${challenge.reward}`,
+		onClick: () => handleDrawerOpen(challenge),
+	}));
 
-  const renderContent = () => (
-    <>
-      <span className="text-lg font-semibold">{t('subscribe_channels_card.title')}</span>
-      <RewardText
-        value={t('subscribe_channels_card.reward_text')}
-        label="F"
-        type="white"
-        gradient="green"
-      />
-      <span className="px-2 text-sm">{t('subscribe_channels_card.description')}</span>
-    </>
-  );
+	const renderContent = () => (
+		<div className="text-center mb-5">
+			<p className="text-2xl font-bold mb-">
+				{t('subscribe_channels_card.title')}
+			</p>
+			<p className="px-2 text-sm">{t('subscribe_channels_card.description')}</p>
+		</div>
+	);
 
-  return <CardWithMenu gradient="green" renderContent={renderContent} menuItems={menuItems} />;
+	return (
+		<>
+			<CardWithMenu
+				gradient="green"
+				renderContent={renderContent}
+				menuItems={menuItems}
+			/>
+
+			<Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+				<DrawerContent>
+					<DrawerHeader>
+						<DrawerClose onClick={() => setIsDrawerOpen(false)}>
+							<X className="h-7 w-7 ml-auto" />
+						</DrawerClose>
+						<DrawerTitle className="text-xl">
+							{selectedChallenge ? t(selectedChallenge.name) : 'title'}
+						</DrawerTitle>
+						<DrawerDescription>
+							{selectedChallenge ? t(selectedChallenge.description) : 'description'}
+						</DrawerDescription>
+					</DrawerHeader>
+					{selectedChallenge && (
+						<div>
+							{/* Пример: кнопка для завершения челленджа */}
+							<button
+								onClick={() => {
+									updateChallengeStatus(selectedChallenge.id);
+									setIsDrawerOpen(false);
+								}}
+							>
+								Завершить
+							</button>
+							{/* Отобразите другие данные из challenge, например, ссылку или награду */}
+						</div>
+					)}
+					<DrawerFooter></DrawerFooter>
+				</DrawerContent>
+			</Drawer>
+		</>
+	);
 };
 
 export default SubscribeChannelsCard;

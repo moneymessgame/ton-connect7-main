@@ -183,5 +183,12 @@
 	"nomobile": {
 		"title": "Десктоп отстой.",
 		"txt": "Мобильный гейминг рулит!"
+	},
+
+	"modal": {
+		"title": "Название",
+		"description": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+		"content": "Содержание",
+		"button": "Закрыть"
 	}
 }

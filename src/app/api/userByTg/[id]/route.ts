@@ -7,7 +7,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const telegramId = params.id;
 	const { walletAddress, ...rest } = await req.json();
 
-	console.log(walletAddress, telegramId, rest);
+	// console.log(walletAddress, telegramId, rest);
 
 	try {
 		const updatedUser = await prisma.user.update({

@@ -24,7 +24,7 @@ async function getUserChallenges(userId: string) {
 
 export async function GET(req: NextRequest, { params }: { params: { userId: string } }) {
 	const userId = params.userId;
-	console.log('Юзер из динамического пути:', userId);
+	// console.log('Юзер из динамического пути:', userId);
 
 	if (!userId) {
 		return NextResponse.json({ error: 'UserId is required' }, { status: 405 });
