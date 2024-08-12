@@ -10,7 +10,6 @@ export default function Drawers() {
 
 	return (
 		<>
-			{/* <Channels /> */}
 			<SubscribeChannelsCard />
 		</>
 	);

@@ -154,16 +154,16 @@
 
 	"challenges": {
 		"challenge1": {
-			"name": "Subscribe to Test Channel",
+			"name": "Test Channel",
 			"description": "MoneyMess Test Channel"
 		},
 		"challenge2": {
-			"name": "Subscribe to MoneyMess Channel",
-			"description": "The Official MoneyMess Channel in English"
+			"name": "MoneyMess Channel",
+			"description": "The Official Channel in English"
 		},
 		"challenge3": {
-			"name": "Subscribe to MoneyMess Channel",
-			"description": "The Official MoneyMess Channel in Russian"
+			"name": "MoneyMess Channel",
+			"description": "The Official Channel in Russian"
 		}
 	},
 
@@ -183,12 +183,5 @@
 	"nomobile": {
 		"title": "Leave the desktop.",
 		"txt": "Mobile gaming rocks!"
-	},
-
-	"modal": {
-		"title": "Title",
-		"description": "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-		"content": "Content",
-		"button": "Close"
 	}
 }

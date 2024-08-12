@@ -10,17 +10,18 @@ import {
 	Drawer,
 	DrawerClose,
 	DrawerContent,
-	DrawerDescription,
 	DrawerFooter,
 	DrawerHeader,
 	DrawerTitle,
 } from '@/components/ui/drawer';
+import ChallengeModal from './ChallengeModal';
 
 const SubscribeChannelsCard: React.FC = () => {
 	const { user } = useUser();
 	const [challenges, setChallenges] = useState<ChallengeWithStatus[]>([]);
-	const [selectedChallenge, setSelectedChallenge] = useState<ChallengeWithStatus | null>(null);
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Состояние для открытия Drawer
+	const [selectedChallenge, setSelectedChallenge] =
+		useState<ChallengeWithStatus | null>(null);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const t = useTranslations();
 
 	useEffect(() => {
@@ -55,7 +56,7 @@ const SubscribeChannelsCard: React.FC = () => {
 
 	const handleDrawerOpen = (challenge: ChallengeWithStatus) => {
 		setSelectedChallenge(challenge);
-		setIsDrawerOpen(true); // Открываем Drawer
+		setIsDrawerOpen(true);
 	};
 
 	const menuItems = challenges.map((challenge) => ({
@@ -85,31 +86,26 @@ const SubscribeChannelsCard: React.FC = () => {
 			/>
 
 			<Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-				<DrawerContent>
+				<DrawerContent className="shadow-glow animate-glow">
 					<DrawerHeader>
 						<DrawerClose onClick={() => setIsDrawerOpen(false)}>
 							<X className="h-7 w-7 ml-auto" />
 						</DrawerClose>
-						<DrawerTitle className="text-xl">
-							{selectedChallenge ? t(selectedChallenge.name) : 'title'}
-						</DrawerTitle>
-						<DrawerDescription>
-							{selectedChallenge ? t(selectedChallenge.description) : 'description'}
-						</DrawerDescription>
+						<DrawerTitle className="text-xl"></DrawerTitle>
 					</DrawerHeader>
 					{selectedChallenge && (
-						<div>
-							{/* Пример: кнопка для завершения челленджа */}
-							<button
-								onClick={() => {
-									updateChallengeStatus(selectedChallenge.id);
-									setIsDrawerOpen(false);
-								}}
-							>
-								Завершить
-							</button>
-							{/* Отобразите другие данные из challenge, например, ссылку или награду */}
-						</div>
+						<ChallengeModal
+							key={selectedChallenge.id}
+							title={t(selectedChallenge.name)}
+							description={t(selectedChallenge.description)}
+							reward={selectedChallenge.reward}
+							refLink={selectedChallenge.refLink}
+							userId={user!.id}
+							challengeId={selectedChallenge.id}
+							telegramId={user!.telegramId.toString()}
+							onSuccess={() => updateChallengeStatus(selectedChallenge.id)}
+							isCompleted={selectedChallenge.isCompleted}
+						/>
 					)}
 					<DrawerFooter></DrawerFooter>
 				</DrawerContent>
