@@ -1,0 +1,47 @@
+@import "../../styles/mixins";
+
+.button {
+  @include flex;
+  width: var(--right-height);
+	color: var(--white);
+  font-size: calc(var(--right-height) * 0.5);
+}
+
+.list {
+  @include flex(stretch, stretch, column);
+  gap: var(--padding);
+  margin-top: var(--main-padding);
+  @include user-select;
+  gap: calc(var(--main-padding) / 2);
+}
+
+.item {
+  --check-size: calc(42px + 8 * (100vw - 320px) / 1080);
+  --padding: calc(var(--main-padding) / 2.5);
+  background-color: var(--bg-opacity-1);
+  border-radius: 100px;
+  padding: var(--padding);
+  @include flex(space-between, center);
+  gap: var(--padding);
+
+  .illu {
+    width: var(--check-size);
+    height: var(--check-size);
+    border-radius: 50%;
+    background-color: var(--bg-opacity-1);
+    @include flex;
+    font-size: calc(var(--check-size) / 2);
+  }
+
+  .txt {
+    flex: 1;
+    font-weight: 800px;
+
+    small {
+      display: block;
+      font-weight: 400;
+      color: var(--grey);
+      font-size: calc(10px + 1 * (100vw - 320px) / 1080);
+    }
+  }
+}

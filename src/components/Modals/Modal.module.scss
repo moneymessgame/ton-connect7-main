@@ -1,0 +1,95 @@
+@import "../../styles/mixins";
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: scroll;
+  background-color: rgba(var(--bg-rgb), 0.5);
+  @include no-scrollbar;
+
+  &Full {
+    padding: calc(var(--main-padding) / 1.5);
+  }
+
+  &Close {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+}
+
+.modal {
+  --modal-padding: var(--main-padding);
+  @include backdrop;
+  background: linear-gradient(rgba(var(--bg-rgb), 0.5), var(--bg));
+  border-radius: var(--radius-1) var(--radius-1) 0 0;
+  margin-top: auto;
+  padding: var(--modal-padding);
+  width: 100%;
+  z-index: 10;
+  animation: revealModal 0.3s var(--cubic);
+  animation-fill-mode: both;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--modal-padding) / 1.5);
+  box-shadow: 0 0 250px rgba(var(--bg-rgb), 0.5),
+    0 0 50px rgba(var(--bg-rgb), 0.75), 0 0 0 1px rgba(var(--bg-rgb), 0.2);
+		
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: var(--bg-opacity-1);
+    border-radius: inherit;
+		 border-top: 2px solid var(--white);
+		 border-left: 0 solid transparent;
+		 border-right: 0 solid transparent;
+		 border-bottom: 0;
+		 box-shadow: 0 0 10px rgba(var(--white-rgb), 0.7); // Свечение
+
+  }
+
+  &.full {
+    min-height: 100%;
+    border-radius: var(--radius-1);
+  }
+
+  & > * {
+    z-index: 5;
+  }
+
+  @keyframes revealModal {
+    from {
+      top: 25px;
+      @include auto-alpha(0);
+    }
+    to {
+      top: 0;
+      @include auto-alpha(1);
+    }
+  }
+}
+
+.close {
+  transition: background-color var(--transition-link);
+  position: absolute;
+  width: var(--size-4);
+  height: var(--size-4);
+  background-color: var(--bg-opacity-1), 50%;
+  right: 10px;
+  top: 10px;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  z-index: 15;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 1.33em;
+}

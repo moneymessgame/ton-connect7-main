@@ -11,6 +11,7 @@
     "seed": "ts-node prisma/seed.mjs"
   },
   "dependencies": {
+    "@iconify/react": "^5.0.2",
     "@next/bundle-analyzer": "^14.2.5",
     "@orbs-network/ton-access": "^2.3.3",
     "@prisma/client": "^5.17.0",
