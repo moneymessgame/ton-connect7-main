@@ -180,7 +180,18 @@
   },
 
 	"nomobile": {
-		"title": "Leave the desktop.",
-		"txt": "Mobile gaming rocks!"
-	}
+		"title": "Deja el escritorio.",
+		"txt": "¡Los juegos móviles son los mejores!"
+	},
+
+	"settings": {
+		"title": "Configuraciones",
+		"txt": "Cambia tus configuraciones",
+		"desc1": "Vibración",
+		"desc2": "Animación de Toque",
+		"desc3": "Animación de Moneda",
+		"description1": "Habilitar o deshabilitar vibración",
+		"description2": "Habilitar o deshabilitar animación de toque",
+		"description3": "Habilitar o deshabilitar animación de números"
+	}	
 }

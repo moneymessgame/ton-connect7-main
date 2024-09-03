@@ -183,5 +183,16 @@
 	"nomobile": {
 		"title": "Leave the desktop.",
 		"txt": "Mobile gaming rocks!"
+	},
+
+	"settings": {
+		"title": "Settings",
+		"txt": "Change your settings",
+		"desc1": "Vibration",
+		"desc2": "Tap Animation",
+		"desc3": "Coin Animation",
+		"description1": "Enable or disable vibration",
+		"description2": "Enable or disable tap animation",
+		"description3": "Enable or disable number animation"
 	}
 }

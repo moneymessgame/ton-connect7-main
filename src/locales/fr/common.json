@@ -182,7 +182,18 @@
   },
 
 	"nomobile": {
-		"title": "Leave the desktop.",
-		"txt": "Mobile gaming rocks!"
+		"title": "Quittez le bureau.",
+		"txt": "Les jeux mobiles, c’est génial!"
+	},
+
+	"settings": {
+		"title": "Paramètres",
+		"txt": "Modifiez vos paramètres",
+		"desc1": "Vibration",
+		"desc2": "Animation de Tap",
+		"desc3": "Animation de Pièce",
+		"description1": "Activer ou désactiver la vibration",
+		"description2": "Activer ou désactiver l'animation de tap",
+		"description3": "Activer ou désactiver l'animation de nombre"
 	}
 }

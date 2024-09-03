@@ -6,6 +6,8 @@ import { Heading } from "../Heading"
 import { Icon } from "../Icon"
 import { Modal } from "../Modals"
 import { Switch } from "../Switch"
+import { useTranslations } from 'next-intl';
+
 import styles from "./Params.module.scss"
 
 interface SwitcherProps {
@@ -17,6 +19,7 @@ interface SwitcherProps {
 }
 
 const Switcher = ({ icon, title, desc, checked, onChange }: SwitcherProps) => {
+
   return (
     <li className={styles.item}>
       <div className={styles.illu}>
@@ -32,6 +35,8 @@ const Switcher = ({ icon, title, desc, checked, onChange }: SwitcherProps) => {
 }
 
 export const Params = () => {
+	const t = useTranslations();
+
   const [isOpen, setIsOpen] = useState(false)
   const {
     vibration,
@@ -45,22 +50,22 @@ export const Params = () => {
   const settings: SwitcherProps[] = [
     {
       icon: "material-symbols-light:vibration-outline-rounded",
-      title: "Vibration",
-      desc: "Enable or disable vibration.",
+			title: t('settings.desc1'),
+      desc: t('settings.description1'),
       checked: vibration,
       onChange: toggleVibration
     },
     {
       icon: "ph:hand-tap-light",
-      title: "Tap Animation",
-      desc: "Enable or disable tap animation.",
+			title: t('settings.desc2'),
+      desc: t('settings.description2'),
       checked: tapAnimation,
       onChange: toggleTapAnimation
     },
     {
       icon: "tabler:numbers",
-      title: "Coin Animation",
-      desc: "Enable or disable number animation.",
+			title: t('settings.desc3'),
+      desc: t('settings.description3'),
       checked: numberAnimaton,
       onChange: toggleNumberAnimation
     }

@@ -180,7 +180,18 @@
   },
 
 	"nomobile": {
-		"title": "Leave the desktop.",
-		"txt": "Mobile gaming rocks!"
-	}
+		"title": "Tinggalkan desktop.",
+		"txt": "Permainan mobile keren!"
+	},
+
+	"settings": {
+		"title": "Pengaturan",
+		"txt": "Ubah pengaturan Anda",
+		"desc1": "Getaran",
+		"desc2": "Animasi Ketukan",
+		"desc3": "Animasi Koin",
+		"description1": "Aktifkan atau nonaktifkan getaran",
+		"description2": "Aktifkan atau nonaktifkan animasi ketukan",
+		"description3": "Aktifkan atau nonaktifkan animasi angka"
+	}	
 }

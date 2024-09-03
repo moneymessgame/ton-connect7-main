@@ -180,7 +180,18 @@
   },
 
 	"nomobile": {
-		"title": "Leave the desktop.",
-		"txt": "Mobile gaming rocks!"
-	}
+		"title": "Verlasse den Desktop.",
+		"txt": "Mobiles Spielen ist der Hammer!"
+	},
+
+	"settings": {
+		"title": "Einstellungen",
+		"txt": "Ändern Sie Ihre Einstellungen",
+		"desc1": "Vibration",
+		"desc2": "Tippen-Animation",
+		"desc3": "Münzen-Animation",
+		"description1": "Vibration ein- oder ausschalten",
+		"description2": "Tippen-Animation ein- oder ausschalten",
+		"description3": "Zahlenanimation ein- oder ausschalten"
+	}	
 }
