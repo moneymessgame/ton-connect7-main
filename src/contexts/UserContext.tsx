@@ -88,6 +88,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
 			if (response.ok) {
 				const userData = await response.json();
+				setUser(userData);  // Устанавливаем данные в состояние
 				return userData;
 			}
 			return null;

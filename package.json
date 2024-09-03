@@ -59,7 +59,8 @@
     "telegram-webapps-types": "^1.0.5",
     "usehooks-ts": "^3.1.0",
     "vaul": "^0.9.1",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@types/jsrsasign": "^10.5.14",
