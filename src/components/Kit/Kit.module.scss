@@ -1,0 +1,12 @@
+@import "../../styles/mixins";
+
+.content {
+  @include flex(flex-start, stretch, column);
+  gap: var(--content-gap, var(--main-padding));
+  margin-bottom: var(--main-padding);
+}
+
+.title {
+  font-weight: 800;
+  font-size: calc(20px + 4 * (100vw - 320px) / 1080);
+}

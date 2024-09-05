@@ -194,5 +194,17 @@
 		"description1": "Enable or disable vibration",
 		"description2": "Enable or disable tap animation",
 		"description3": "Enable or disable number animation"
-	}
+	},
+
+	"friends": {
+		"title": "Invite Friends",
+		"txt": "Invite Friends, Make alliances and Get rewards",
+		"description": "For you and your friend",
+    "copied": "Copied",
+    "list": {
+			"title": "List of your friends",
+      "invite": "Invite a Friend",
+      "no": "You haven't invited anyone yet"
+    }
+  }
 }
