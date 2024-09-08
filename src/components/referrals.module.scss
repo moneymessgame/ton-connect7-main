@@ -1,0 +1,93 @@
+@import "../styles/mixins";
+
+.headingGift {
+  width: calc(100px + 50 * (100vw - 320px) / 1080);
+  @include mask(linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0)) 100%);
+  margin: calc(var(--main-padding) * -1) 0;
+}
+
+// rotating animation when class .rotating is added
+.rotating {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.special {
+  --padding: calc(var(--main-padding) / 1.5);
+  padding: var(--padding);
+  border-radius: var(--radius-2);
+  background-color: var(--bg-opacity-1);
+  @include flex(flex-start);
+  gap: calc(var(--main-padding) / 1.5);
+
+  & + .special {
+    margin-top: calc(var(--main-padding) * -0.5);
+  }
+
+  img {
+    width: calc(40px + 24 * (100vw - 320px) / 1080);
+  }
+
+  h3 {
+    font-size: calc(14px + 2 * (100vw - 320px) / 1080);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.15em;
+  }
+
+  span {
+    font-size: calc(11px + 2 * (100vw - 320px) / 1080);
+    color: var(--grey);
+
+    strong {
+      color: var(--pink);
+      font-weight: 800;
+    }
+  }
+}
+
+.list {
+  @include flex(flex-start, stretch, column);
+  gap: var(--main-padding);
+
+  &Top {
+    @include flex(space-between, center);
+
+    svg {
+      font-size: 1.25em;
+    }
+  }
+
+  &Title {
+    small {
+      color: var(--grey);
+      font-weight: 500;
+      font-size: 0.85em;
+      margin-left: 0.15em;
+    }
+  }
+
+  &No {
+    text-align: center;
+    background-color: var(--bg-opacity-1);
+    border-radius: var(--radius-2);
+    padding: 1em;
+    color: var(--grey);
+  }
+}
+
+.copy {
+  flex: 0;
+  min-width: 50px;
+  padding: 0;
+
+  svg {
+    transform: scale(1.25);
+    margin-right: 0;
+  }
+}

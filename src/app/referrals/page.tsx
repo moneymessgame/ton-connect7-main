@@ -76,12 +76,12 @@ const Referrals: React.FC = () => {
 				/>
 			</ButtonGroup>
 			<div>
-				<RefLink />
-				<ReferralsList />
+				{/* <RefLink /> */}
 				<CardSpecial
 					title={t('friends.title')}
 					description={t('friends.description')}
 				/>
+				<ReferralsList />
 			</div>
 			{/* <div className={styles.list}>
         <div className={styles.listTop}>
