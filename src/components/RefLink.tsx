@@ -20,8 +20,8 @@ const RefLink: React.FC = () => {
     return <p>No user was found</p>;
   }
 
-  // const referralLink = `https://t.me/mysuperpupermegabot/view?startApp=${user.telegramId}`;
-  const referralLink = `https://t.me/mysuperpupermegabot/view?startApp=clzfi1xra0000iteva28kghds`;
+  const referralLink = `https://t.me/mysuperpupermegabot/view?startApp=${user?.telegramId}`;
+  // const referralLink = `https://t.me/mysuperpupermegabot/view?startApp=clzfi1xra0000iteva28kghds`;
 
   const copyToClipboard = () => {
     if (inputRef.current) {

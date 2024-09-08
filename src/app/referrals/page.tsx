@@ -1,22 +1,50 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import RefLink from '@/components/RefLink';
 import ReferralsList from '@/components/ReferralsList';
 import { useUser } from '@/contexts/UserContext';
 import { CardSpecial } from '@/components/InviteAFriend/CardSpecial';
-import { Content } from '@/components/Kit';
+import { Content, Title } from '@/components/Kit';
 import { Heading } from '@/components/Heading';
 
 import styles from './referrals.module.scss';
+import { Button, ButtonGroup } from '@/components/Button';
+import { toast } from 'sonner';
+import { Icon } from '@/components/Icon';
+
+const CardFriend = ({ title, isPremium }: { title: string, isPremium: boolean}) => {
+  return (
+    <div className={styles.special}>
+			<img src='/images/avatar.png' width={73} height={79} alt={title} />
+      <div>
+        <h3>{title}</h3>
+        <span>
+          <strong>+10000</strong>
+        </span>
+      </div>
+    </div>
+  )
+}
 
 const Referrals: React.FC = () => {
 	const t = useTranslations();
 	const { user, loading } = useUser();
+	const [copied, setCopied] = useState(false);
+
+	const inviteLink = `${process.env.NEXT_PUBLIC_TWA_URL}?startApp=${user?.telegramId}`;
 
 	if (loading) return <div>Loading...</div>;
+
+	const copy = () => {
+		if (copied) return;
+		navigator.clipboard.writeText(inviteLink);
+		toast.success(t('friends.copied'));
+		setCopied(true);
+		setTimeout(() => setCopied(false), 4000);
+	};
 
 	return (
 		<Content>
@@ -33,6 +61,20 @@ const Referrals: React.FC = () => {
 					/>
 				}
 			/>
+			<ButtonGroup>
+				<Button
+					className={styles.invite}
+					href={`https://t.me/share/url?url=${inviteLink}`}
+				>
+					{t('friends.list.invite')}
+				</Button>
+				<Button
+					className={styles.copy}
+					icon={copied ? 'ph:check' : 'ph:copy-simple'}
+					type="secondary"
+					onClick={copy}
+				/>
+			</ButtonGroup>
 			<div>
 				<RefLink />
 				<ReferralsList />
@@ -41,6 +83,18 @@ const Referrals: React.FC = () => {
 					description={t('friends.description')}
 				/>
 			</div>
+			{/* <div className={styles.list}>
+        <div className={styles.listTop}>
+          <Title className={styles.listTitle}>
+            {t("list.title")} <small>({invited.length})</small>
+          </Title>
+          <Icon icon="ph:arrows-clockwise" className={pending ? styles.rotating : ''} onClick={handleRefresh} />
+        </div>
+        {invited.map((i, index) => (
+          <CardFriend key={index} title={constructName(i.firstName, i.lastName, i.username)} isPremium={i.isPremium} />
+        ))}
+        {invited.length === 0 && <div className={styles.listNo}>{t("list.no")}</div>}
+      </div> */}
 		</Content>
 	);
 };

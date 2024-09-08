@@ -1,0 +1,96 @@
+@import "../../styles/mixins";
+
+.btn {
+  --btn-color: var(--gradient-1);
+  transition: transform var(--transition-scale);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  font-size: var(--btn-size, 1.1em);
+  gap: 0.75em;
+  font-weight: 700;
+  padding: var(--btn-padding, 1em 2em);
+  border-radius: 100px;
+  @include user-select;
+
+  & > span {
+    z-index: 5;
+  }
+
+  & > * {
+    pointer-events: none;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    transform: scale(1.5);
+    margin-right: -0.25em;
+    color: var(--color);
+    z-index: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    @include transition(transition-link, (opacity, border-color));
+    @include border-gradient(var(--btn-color));
+  }
+
+  &[data-type="secondary"] {
+    --btn-color: rgba(var(--grey-rgb, 0.1));
+
+    &::before {
+      opacity: 0.25;
+    }
+  }
+
+  &:hover {
+    .light {
+      transition: opacity 0.5s;
+      opacity: 0.75;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  max-width: 100%;
+
+  & > * {
+    flex: 1;
+  }
+
+  @include min($xs) {
+    display: inline-flex;
+  }
+}
+
+.light {
+  --y: 10px;
+  --x: 50px;
+  transition: opacity 1s, background var(--transition-link);
+  position: absolute;
+  z-index: 0;
+  border-radius: inherit;
+  inset: 0;
+  overflow: hidden;
+  background: var(--btn-color);
+  pointer-events: auto;
+  opacity: 0;
+  @include mask(
+    radial-gradient(circle at var(--x) var(--y), black 0%, transparent 100%)
+  );
+}

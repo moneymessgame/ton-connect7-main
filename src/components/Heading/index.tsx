@@ -21,8 +21,8 @@ export const Heading = ({
 	return (
 		<div {...props} className={clsx(styles.heading, props.className)}>
 			{top && top}
-			{title && <div className={styles.title}> {t('settings.title')}</div>}
-			{txt && <p className={styles.txt}>{t('settings.txt')}</p>}
+			{title && <div className={styles.title}> {title}</div>}
+			{txt && <p className={styles.txt}>{txt}</p>}
 			{bottom && bottom}
 		</div>
 	);

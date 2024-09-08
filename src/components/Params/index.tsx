@@ -78,7 +78,7 @@ export const Params = () => {
       </button>
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)} className={styles.modal}>
-          <Heading title="Settings" txt="Change your settings" />
+					<Heading title={t('settings.title')} txt={t('settings.txt')} />
           <ul className={styles.list}>
             {settings.map((setting) => (
               <Switcher key={setting.title} {...setting} />
