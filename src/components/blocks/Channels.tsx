@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { X, PanelBottomOpen } from 'lucide-react';
-import SubscribeChannelsCard from '../SubscribeChannelsCard';
+import SubscribeChannelsCard from '../shared/SubscribeChannelsCard';
 
 import {
 	Drawer,
@@ -15,7 +15,6 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer';
-
 
 const Channels = () => {
 	const t = useTranslations();
@@ -40,4 +39,3 @@ const Channels = () => {
 };
 
 export default Channels;
-

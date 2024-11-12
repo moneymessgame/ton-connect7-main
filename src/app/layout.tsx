@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
+// import { GoogleAnalytics } from '@next/third-parties/google';
 
 import styles from './layout.module.scss';
 import '@/styles/globals.scss';
@@ -85,6 +86,7 @@ export default function RootLayout({
 						</ThemeProvider>
 					</TonProvider>
 				</LangProvider>
+				{/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} /> */}
 			</body>
 		</html>
 	);

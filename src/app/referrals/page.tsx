@@ -3,31 +3,37 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import RefLink from '@/components/RefLink';
-import ReferralsList from '@/components/ReferralsList';
+import RefLink from '@/components/shared/Referrals/RefLink';
+import ReferralsList from '@/components/shared/Referrals/ReferralsList';
 import { useUser } from '@/contexts/UserContext';
-import { CardSpecial } from '@/components/InviteAFriend/CardSpecial';
-import { Content, Title } from '@/components/Kit';
-import { Heading } from '@/components/Heading';
+import { CardSpecial } from '@/components/shared/InviteAFriend/CardSpecial';
+import { Content, Title } from '@/components/shared/Kit';
+import { Heading } from '@/components/shared/Heading';
 
 import styles from './referrals.module.scss';
-import { Button, ButtonGroup } from '@/components/Button';
+import { Button, ButtonGroup } from '@/components/shared/Button';
 import { toast } from 'sonner';
-import { Icon } from '@/components/Icon';
+import { Icon } from '@/components/shared/Icon';
 
-const CardFriend = ({ title, isPremium }: { title: string, isPremium: boolean}) => {
-  return (
-    <div className={styles.special}>
-			<img src='/images/avatar.png' width={73} height={79} alt={title} />
-      <div>
-        <h3>{title}</h3>
-        <span>
-          <strong>+10000</strong>
-        </span>
-      </div>
-    </div>
-  )
-}
+const CardFriend = ({
+	title,
+	isPremium,
+}: {
+	title: string;
+	isPremium: boolean;
+}) => {
+	return (
+		<div className={styles.special}>
+			<img src="/images/avatar.png" width={73} height={79} alt={title} />
+			<div>
+				<h3>{title}</h3>
+				<span>
+					<strong>+10000</strong>
+				</span>
+			</div>
+		</div>
+	);
+};
 
 const Referrals: React.FC = () => {
 	const t = useTranslations();

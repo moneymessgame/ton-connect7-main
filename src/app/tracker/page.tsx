@@ -1,11 +1,11 @@
 'use client';
 
-import Loader from '@/components/Loader';
+import Loader from '@/components/shared/Loader';
 import { useUser } from '@/contexts/UserContext';
 import { useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
-import PeriodTracking from '@/components/PeriodTracking';
+import PeriodTracking from '@/components/shared/PeriodTracking';
 
 export default function Tracker() {
 	const { user, loading, refetchUser, lastPeriodDate } = useUser();
