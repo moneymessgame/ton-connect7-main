@@ -38,6 +38,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "crypto": "^1.0.1",
+    "framer-motion": "^11.11.13",
     "i18next": "^23.12.1",
     "i18next-http-backend": "^2.5.2",
     "is-mobile": "^4.0.0",

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { X, PanelBottomOpen } from 'lucide-react';
-import SubscribeChannelsCard from '../shared/SubscribeChannelsCard';
+import SubscribeChannelsCard from '@/components/shared/common/SubscribeChannelsCard';
 
 import {
 	Drawer,

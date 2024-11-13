@@ -1,50 +1,49 @@
+'use client';
 import Link from 'next/link';
-
+import { usePathname } from 'next/navigation';
 import { Home, Timer, Coins, UserPlus, PanelBottomOpen } from 'lucide-react';
 
 export default function Navigation() {
+	const pathname = usePathname();
+
+	// Массив для навигации с маршрутом, компонентом иконки и названием
+	const navItems = [
+		{ href: '/', icon: Home, label: 'Home' },
+		{ href: '/tracker', icon: Timer, label: 'Tracker' },
+		{ href: '/referrals', icon: UserPlus, label: 'Referrals' },
+		{ href: '/socials', icon: PanelBottomOpen, label: 'Socials' },
+		{ href: '/ton', icon: Coins, label: 'TON' },
+	];
+
 	return (
-		<nav className="fixed bottom-0 left-0 right-0 z-40 flex h-14 w-full items-center justify-around bg-background border-t border-border shadow-[0_-2px_4px_rgba(0,0,0,0.05)]">
-			<Link
-				href="/"
-				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
-				prefetch={false}
-			>
-				<Home className="h-6 w-6" />
-				<span className="text-xs">Home</span>
-			</Link>
-			<Link
-				href="/tracker"
-				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
-				prefetch={false}
-			>
-				<Timer className="h-6 w-6" />
-				<span className="text-xs">Tracker</span>
-			</Link>
-			<Link
-				href="/referrals"
-				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
-				prefetch={false}
-			>
-				<UserPlus className="h-6 w-6" />
-				<span className="text-xs">Referrals</span>
-			</Link>
-			<Link
-				href="/socials"
-				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
-				prefetch={false}
-			>
-				<PanelBottomOpen className="h-6 w-6" />
-				<span className="text-xs">Socials</span>
-			</Link>
-			<Link
-				href="/ton"
-				className="flex flex-col items-center justify-center gap-1 text-muted-foreground transition-colors hover:text-foreground focus:text-foreground"
-				prefetch={false}
-			>
-				<Coins className="h-6 w-6" />
-				<span className="text-xs">TON</span>
-			</Link>
+		<nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 flex items-center justify-around  bg-gradient-to-r from-[#3a314f] to-[#2e2645]  rounded-2xl h-16 w-[90%] max-w-xl shadow-md border">
+			{navItems.map((item) => {
+				const Icon = item.icon;
+				const isActive = pathname === item.href;
+
+				return (
+					<Link
+						key={item.href}
+						href={item.href}
+						className="relative flex flex-col items-center justify-center gap-1 transition-colors text-[#b9a1e2]"
+						prefetch={false}
+					>
+						{isActive && (
+							<div
+								className="absolute inset-0 rounded-full -z-10"
+								style={{
+									background: 'radial-gradient(circle, rgba(255, 230, 0, 0.3), transparent 90%)',
+									filter: 'blur(10px)',
+								}}
+							/>
+						)}
+						<div className="relative flex items-center justify-center h-12 w-12  transition-all">
+							<Icon className={`h-10 w-10 pt-4 ${isActive ? 'text-white' : 'text-[#b9a1e2]'}`} />
+						</div>
+						<span className="text-xs pb-4">{item.label}</span>
+					</Link>
+				);
+			})}
 		</nav>
 	);
 }

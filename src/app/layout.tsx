@@ -35,8 +35,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-	title: 'Telegram mini app',
-	description: 'Best app in the world',
+	title: 'MoneyMess Game',
+	description: 'Telegram mini app',
 };
 
 export default function RootLayout({
