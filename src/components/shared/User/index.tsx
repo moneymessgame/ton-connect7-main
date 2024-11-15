@@ -18,8 +18,8 @@ export const User = () => {
 	return (
 		<div className={styles.left}>
 			<Avatar src={photoUrl} name={name} />
-			<div className={styles.name}>
-				{name} <small>(Newbie)</small> {/* TODO: add level */}
+			<div>
+				{name} <small>(Tracker)</small> {/* TODO: add level */}
 			</div>
 		</div>
 	);

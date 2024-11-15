@@ -1,6 +1,9 @@
+import { Viewport } from 'next';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
+
 // import { GoogleAnalytics } from '@next/third-parties/google';
 
 import styles from './layout.module.scss';
@@ -19,12 +22,13 @@ import Loader from '@/components/blocks/Loader';
 
 import Navigation from '@/components/blocks/Navigation';
 
-import { Viewport } from 'next';
 import { NoMobile } from '@/components/blocks/NoMobile';
 
 import { Toaster } from '@/components/ui/toaster';
+import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+
+const font = Montserrat({ subsets: ['cyrillic-ext'] });
 
 export const viewport: Viewport = {
 	themeColor: 'rgb(5, 8, 17)',
@@ -52,7 +56,12 @@ export default function RootLayout({
 					strategy="beforeInteractive"
 				/>
 			</head>
-			<body className={inter.className}>
+			<body
+				className={cn(
+					'',
+					font.className
+				)}
+			>
 				<LangProvider>
 					<TonProvider>
 						<ThemeProvider

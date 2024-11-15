@@ -4,18 +4,19 @@
   display: flex;
   flex-direction: column;
   @include real-height;
+	
 }
 
 .main {
   flex: 1;
-  background: linear-gradient(var(--bg-opacity-1), var(--bg));
+	background: linear-gradient(var(--bg), #100440 );
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
   border-radius: var(--radius-1) var(--radius-1) 0 0;
-  padding: var(--main-padding);
-  padding-bottom: calc(var(--nav-height) + var(--main-padding));
+  // padding: var(--main-padding);
+  // padding-bottom: calc(var(--nav-height) + var(--main-padding));
   @include no-scrollbar;
 }
 

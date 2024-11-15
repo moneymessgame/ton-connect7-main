@@ -6,6 +6,9 @@ import Image from 'next/image';
 
 import Menu from '@/components/blocks/Menu';
 import CardSpread from '@/components/shared/animata/Card/card-spread';
+import FirstPack from '@/components/test/card-pack-open';
+import SecondPack from '@/components/test/card-pack-opener';
+import ThirdPack from '@/components/test/card-pack-opening';
 
 export default function Home() {
 	const initData = useInitData();
@@ -17,9 +20,12 @@ export default function Home() {
 	}, []);
 
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			<div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+		<main className="">
+			<div className="z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex">
 				<Menu />
+				{/* <FirstPack /> */}
+				{/* <SecondPack /> */}
+				{/* <ThirdPack /> */}
 			</div>
 		</main>
 	);
