@@ -104,6 +104,8 @@ model SocialMedia {
   
 }
 
+//MAFSTAT
+
 model Game {
   id           String       @id @default(cuid())
   date         DateTime
@@ -180,7 +182,7 @@ model Action {
 }
 
 model Judge {
-  id   Int    @id @default(autoincrement())
+  id         Int    @id @default(autoincrement())
   playerId   String
   player     Player    @relation(fields: [playerId], references: [id])
   value      Json
@@ -198,8 +200,20 @@ model Role {
 }
 
 model Result {
-  id    Int    @id @default(autoincrement())
-  text  String
+  id     Int    @id @default(autoincrement())
+  text   String
   result String
-  value Json
+  value  Json
+}
+
+//MoneyMess
+
+model Character {
+  id        String  @id @default(cuid())
+  firstname String
+  lastname  String
+  nickname  String
+  src       String
+  rarity    String
+  
 }
