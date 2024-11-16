@@ -17,7 +17,7 @@ export const User = () => {
     }
   }, [fetchUser, initData, user]);
 
-  if (!user) return <div>No user data available</div>;
+  if (!user) return <div>Loading</div>;
 
   const { username, firstName, lastName, photoUrl } = user;
   const name = constructName(firstName, lastName, username);
