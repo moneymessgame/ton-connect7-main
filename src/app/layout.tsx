@@ -26,6 +26,7 @@ import { NoMobile } from '@/components/blocks/NoMobile';
 
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import Menu from '@/components/blocks/Menu';
 
 
 const font = Montserrat({ subsets: ['cyrillic-ext'] });
@@ -82,6 +83,7 @@ export default function RootLayout({
 										/>
 										<main className={styles.layout}>
 											<div className={styles.main} data-ref="main">
+												<Menu />
 												{children}
 												<Navigation />
 											</div>

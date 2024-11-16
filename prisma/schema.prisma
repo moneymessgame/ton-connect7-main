@@ -34,7 +34,11 @@ model User {
   balanceHistory      BalanceHistory[]
   userChallenges      UserChallenge[]
 
+  
+
   @@index([telegramId], name: "telegramId_index")
+  
+  player Player[]
 }
 
 model BalanceHistory {
@@ -94,7 +98,108 @@ model SocialMedia {
   platform  String
   handle    String
   userId    String
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
+  
+}
+
+model Game {
+  id           String       @id @default(cuid())
+  date         DateTime
+  timeEnd      DateTime     @default(now())
+  name         String
+  firstKill    Int          @default(0)
+  bestMove     Json
+  typeLabel    String
+  typeGame     String
+  resultLabel  String
+  resultCivilian Int
+  resultMafia  Int
+  resultDeadHeat Int
+  table        Int          @default(1)
+  about        String?
+  judge        Judge[]
+  players      Player[]
+  ratings      Rating[]
+  actions      Action[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  clubId       String
+  club         Club         @relation(fields: [clubId], references: [id])
+}
+
+model Player {
+  id          String       @id @default(cuid())
+  nickname    String       @unique
+  roles       Role[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  games       Game[]
+  club        Club[]
+  action      Action[]
+  judge       Judge[]
+}
+
+model Rating {
+  id            String       @id @default(cuid())
+  name          String
+  date          DateTime
+  clubId        String
+  ratings       Json
+  games         Game[]
+  clubs         Club[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+}
+
+model Club {
+  id            String       @id @default(cuid())
+  name          String
+  city          String
+  url           String
+  ratings       Rating[]
+  games         Game[]
+  players       Player[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model Action {
+  id         String    @id @default(cuid())
+  gameId     String
+  playerId   String
+  actionType String    // Например: "vote", "kill", "defend"
+  targetId   String      // Ссылка на другого игрока, если действие направлено на него
+  timestamp  DateTime  @default(now())
+  game       Game      @relation(fields: [gameId], references: [id])
+  player     Player    @relation(fields: [playerId], references: [id])
+}
+
+model Judge {
+  id   Int    @id @default(autoincrement())
+  playerId   String
+  player     Player    @relation(fields: [playerId], references: [id])
+  value      Json
+  games      Game[]
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  text  String
+  url   String
+  team  String
+  value Json
+
+  player Player[]
+}
+
+model Result {
+  id    Int    @id @default(autoincrement())
+  text  String
+  result String
+  value Json
 }

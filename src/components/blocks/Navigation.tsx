@@ -9,7 +9,8 @@ export default function Navigation() {
 	// Массив для навигации с маршрутом, компонентом иконки и названием
 	const navItems = [
 		{ href: '/', icon: Home, label: 'Home' },
-		{ href: '/tracker', icon: Timer, label: 'Tracker' },
+		//{ href: '/tracker', icon: Timer, label: 'Tracker' },
+		{ href: '/seed', icon: Timer, label: 'test' },
 		{ href: '/referrals', icon: UserPlus, label: 'Referrals' },
 		{ href: '/socials', icon: PanelBottomOpen, label: 'Socials' },
 		{ href: '/ton', icon: Coins, label: 'TON' },

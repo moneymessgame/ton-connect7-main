@@ -22,7 +22,6 @@ export default function Home() {
 	return (
 		<main className="">
 			<div className="z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex">
-				<Menu />
 				{/* <FirstPack /> */}
 				{/* <SecondPack /> */}
 				{/* <ThirdPack /> */}
