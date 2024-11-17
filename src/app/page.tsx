@@ -9,6 +9,7 @@ import CardSpread from '@/components/shared/animata/Card/card-spread';
 import FirstPack from '@/components/test/card-pack-open';
 import SecondPack from '@/components/test/card-pack-opener';
 import ThirdPack from '@/components/test/card-pack-opening';
+import CharacterCard from '@/components/test/character-card';
 
 export default function Home() {
 	const initData = useInitData();
@@ -25,6 +26,7 @@ export default function Home() {
 				<FirstPack />
 				<SecondPack />
 				<ThirdPack />
+				<CharacterCard />
 			</div>
 		</main>
 	);

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Progress } from '@/components/ui/progress'
+import { Progress } from './progress'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ChevronUpIcon, ChevronDownIcon, UserIcon } from 'lucide-react'
 
@@ -109,7 +109,11 @@ export default function CharacterCard() {
           </Button>
         </div>
       </div>
-      <Progress value={(characteristics[characteristic] / MAX_CHARACTERISTIC_VALUE) * 100} className="h-2" />
+      <Progress 
+        value={(characteristics[characteristic] / MAX_CHARACTERISTIC_VALUE) * 100} 
+        className="h-2"
+        aria-label={`${label} progress`}
+      />
     </div>
   )
 
