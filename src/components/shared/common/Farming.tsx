@@ -11,7 +11,7 @@ const cardClassName =
 const SubscribeCard: React.FC = () => {
   const t = useTranslations('farming.subscribe_card');
   return (
-    <div className={`${cardClassName} rounded-[4px_4px_4px_20px]`}>
+    <div className={`${cardClassName} rounded-[4px_4px_4px_20px] bg-default_bg`}>
       <Rss className="size-5 text-[var(--font-pink-primary)]" />
       <div className="flex grow flex-col items-center text-center">
         <h4 className="text-base font-extrabold text-[var(--font-dark-primary)] sm:text-sm">
@@ -26,7 +26,7 @@ const SubscribeCard: React.FC = () => {
 const ShareCard: React.FC = () => {
   const t = useTranslations('farming.share_card');
   return (
-    <div className={cardClassName}>
+    <div className={`${cardClassName} rounded-[4px_4px_4px_4px] bg-default_bg`}>
       <MessageSquareHeart className="size-5 text-[var(--font-blue-primary)]" />
       <div className="flex grow flex-col items-center text-center">
         <h4 className="text-base font-extrabold text-[var(--font-dark-primary)] sm:text-sm">
@@ -41,7 +41,7 @@ const ShareCard: React.FC = () => {
 const InviteCard: React.FC = () => {
   const t = useTranslations('farming.invite_card');
   return (
-    <div className={`${cardClassName} rounded-[4px_4px_20px_4px]`}>
+    <div className={`${cardClassName} rounded-[4px_4px_20px_4px] bg-default_bg`}>
       <UserPlus className="size-5 text-[var(--font-orange-primary)]" />
       <div className="flex grow flex-col items-center text-center">
         <h4 className="text-base font-extrabold text-[var(--font-dark-primary)] sm:text-sm">

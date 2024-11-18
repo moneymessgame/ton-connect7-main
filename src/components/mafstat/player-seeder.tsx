@@ -37,22 +37,22 @@ export default function PlayerSeeder() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto text-white bg-default_bg">
       <CardHeader>
         <CardTitle>Player Seeder</CardTitle>
         <CardDescription>Upload a JSON file to seed player data into the database.</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-blue_ui">
           <div>
             <Input
               type="file"
               accept=".json"
               onChange={handleFileChange}
-              className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+              className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-blue_ui hover:file:bg-violet-100"
             />
           </div>
-          <Button type="submit" disabled={!file || isLoading} className="w-full">
+          <Button type="submit" disabled={!file || isLoading} className="w-full bg-blue_ui text-white">
             {isLoading ? 'Seeding...' : 'Seed Players'}
           </Button>
         </form>

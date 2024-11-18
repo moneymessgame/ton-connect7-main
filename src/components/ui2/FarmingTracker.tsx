@@ -105,7 +105,7 @@ const FarmingTracker: React.FC<FarmingTrackerProps> = ({
   };
 
   return (
-    <div className="flex h-auto w-full flex-col items-center justify-center gap-1.5 rounded-b-[4px] rounded-t-[40px] bg-[var(--font-dark-secondary)] p-4">
+    <div className="flex h-auto w-full flex-col items-center justify-center gap-1.5 rounded-b-[4px] rounded-t-[40px] p-4">
       {/* Title Section */}
       <div className="flex w-full max-w-[313px] flex-col items-center gap-2 p-0">
         <div className="flex flex-row items-center gap-2 p-0">

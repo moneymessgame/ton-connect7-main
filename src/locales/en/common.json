@@ -91,11 +91,11 @@
 			"description": "Subscribe to our channels"
 		},
 		"share_card": {
-			"reward": "+600 HC",
+			"reward": "+500 HC",
 			"description": "Share about yourself (coming soon!)"
 		},
 		"invite_card": {
-			"reward": "+600 HC",
+			"reward": "+700 HC",
 			"description": "Invite a user (coming soon!)"
 		}
 	},
@@ -203,7 +203,7 @@
     "copied": "Copied",
     "list": {
 			"title": "List of your friends",
-      "invite": "Invite a Friend",
+      "invite_card": "Invite a Friend",
       "no": "You haven't invited anyone yet"
     }
   }
