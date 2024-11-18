@@ -6,6 +6,7 @@ import { BorderBeam } from '@/components/ui';
 import GameCardFront from '@/components/shared/Card/GameCardFront';
 import GameCardBack from '@/components/shared/Card/GameCardBack';
 import { CardFlipProps } from '@/types/card-flip';
+import styles from './CardFlip.module.scss';
 
 const CardFlip: React.FC<CardFlipProps> = ({
 	srcFront,
@@ -33,7 +34,9 @@ const CardFlip: React.FC<CardFlipProps> = ({
 
 	return (
 		<div className="m-4" onClick={handleFlip}>
-			<div className="flip-card w-[285px] h-[390px] rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl backdrop-blur-3xl cursor-pointer">
+			<div
+				className={`w-[285px] h-[390px] rounded-xl p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl backdrop-blur-3xl cursor-pointer ${styles['flip-card']}`}
+			>
 				<BorderBeam
 					size={250}
 					duration={12}
@@ -42,13 +45,13 @@ const CardFlip: React.FC<CardFlipProps> = ({
 					colorFrom={colorFrom}
 				/>
 				<motion.div
-					className="flip-card-inner w-[100%] h-[100%]"
+					className={styles['flip-card-inner']}
 					initial={false}
 					animate={{ rotateY: isFlipped ? 180 : 0 }}
 					transition={{ duration: 0.1, animationDirection: 'normal' }}
 					onAnimationComplete={() => setIsAnimated(false)}
 				>
-					<div className="flip-card-front w-[100%] h-[100%] overflow-hidden relative rounded-md lg:rounded-xl shadow-2xl">
+					<div className={`${styles['flip-card-front']} shadow-2xl`}>
 						<GameCardFront
 							srcFront={srcFront}
 							srcFrontBg={srcFrontBg}
@@ -63,8 +66,8 @@ const CardFlip: React.FC<CardFlipProps> = ({
 							altFront={altFront}
 						/>
 					</div>
-					<div className="flip-card-back w-[100%] h-[100%] z-50 absolute top-0 left-0 rounded-md lg:rounded-xl  backface-hidden overflow-hidden">
-						<GameCardBack 
+					<div className={`${styles['flip-card-back']} z-50`}>
+						<GameCardBack
 							srcFront={srcFront}
 							srcFrontBg={srcFrontBg}
 							srcBack={srcBack}

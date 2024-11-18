@@ -75,8 +75,8 @@ export default function RootLayout({
 									<ModalProvider>
 										{/* <Loader /> */}
 										<NextTopLoader
-											color="var(--pink)"
-											height={2}
+											color="var(--blue)"
+											height={1}
 											showSpinner={false}
 											zIndex={999999}
 										/>

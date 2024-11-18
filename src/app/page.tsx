@@ -23,10 +23,11 @@ export default function Home() {
 	return (
 		<main className="">
 			<div className="z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex flex-col">
-				<FirstPack />
+				{/* <FirstPack />
 				<SecondPack />
-				<ThirdPack />
-				<CharacterCard />
+				<ThirdPack /> 
+				<CharacterCard />*/}
+				{/* <CardSpread /> */}
 			</div>
 		</main>
 	);

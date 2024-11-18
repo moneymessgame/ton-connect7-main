@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-const config = {
+const config: Config = {
 	darkMode: ['class'],
 	content: [
 		'./pages/**/*.{ts,tsx}',
@@ -8,7 +8,6 @@ const config = {
 		'./app/**/*.{ts,tsx}',
 		'./src/**/*.{ts,tsx}',
 	],
-	prefix: '',
 	theme: {
 		container: {
 			center: true,
@@ -52,6 +51,18 @@ const config = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
+				grey: 'rgb(var(--grey-rgb))',
+				white: 'rgb(var(--white-rgb))',
+				blue_ui: 'rgb(var(--blue_ui-rgb))',
+				dark_blue: 'rgb(var(--dark_blue-rgb))',
+				dominion: 'rgb(var(--dominion-rgb))',
+				popularity: 'rgb(var(--popularity-rgb))',
+				richness: 'rgb(var(--richness-rgb))',
+				attractiveness: 'rgb(var(--attractiveness-rgb))',
+				bg_dominion: 'rgb(var(--bg_dominion-rgb))',
+				bg_popularity: 'rgb(var(--bg_popularity-rgb))',
+				bg_richness: 'rgb(var(--bg_richness-rgb))',
+				bg_attractiveness: 'rgb(var(--bg_attractiveness-rgb))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -71,19 +82,14 @@ const config = {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'glow': 'glow 1.5s infinite ease-in-out',
-			},
-			glow: {
-				'0%, 100%': { boxShadow: '0 0 8px 2px rgba(255, 255, 255, 0.7)' },
-				'50%': { boxShadow: '0 0 12px 4px rgba(255, 255, 255, 0.9)' },
+				glow: 'glow 1.5s infinite ease-in-out',
 			},
 			boxShadow: {
-				// Добавляем эффект свечения
 				glow: '0 0 10px 1px rgba(255, 255, 255, 0.7)',
 			},
 		},
 	},
 	plugins: [require('tailwindcss-animate')],
-} satisfies Config;
+};
 
 export default config;
