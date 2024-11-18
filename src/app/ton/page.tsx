@@ -165,9 +165,9 @@ export default function Ton() {
     <div className="flex h-screen flex-col">
 
       <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 px-4 text-center">
-        <div className="flex w-full max-w-lg items-center justify-between rounded-3xl bg-pink-100 p-4">
-          <Wallet className="text-pink-500" size={32} />
-          <p className="mx-4 flex-1 text-header2 text-deep-dark">{t('connect_wallet')}</p>
+        <div className="flex w-full max-w-lg items-center justify-between rounded-3xl bg-default_bg p-4">
+					<Wallet className="text-white" size={32} />
+          <p className="mx-4 flex-1 text-white">{t('connect_wallet')}</p>
           <TonConnectButton />
         </div>
 
@@ -185,7 +185,7 @@ export default function Ton() {
 					</div>
 				) : (
 					<div
-						className="mb-4 flex w-full max-w-lg flex-col items-center justify-between rounded-3xl bg-blue_ui p-4"
+						className="mb-4 flex w-full max-w-lg flex-col items-center justify-between rounded-3xl bg-default_bg p-4"
 						onClick={handleInitBlockchain}
 					>
 						<div className="flex w-full items-center justify-between">

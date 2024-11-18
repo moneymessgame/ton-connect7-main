@@ -19,6 +19,7 @@
     bg_popularity: "3, 47, 48", // #032f30
     bg_richness: "3, 68, 3", // #034403
     bg_attractiveness: "68, 5, 5", // #440505
+		default_bg: "rgba(255, 255, 255, 0.15)"
   );
 
   @each $color, $rgb in $colors {
@@ -26,7 +27,7 @@
     --#{$color}: rgb(var(--#{$color}-rgb));
   }
 
-  --bg-opacity-1: rgba(var(--white-rgb), 0.03);
+	--bg-opacity-1: rgba(var(--white-rgb), 0.15); // То же, что и default_bg
   --bg-opacity-2: rgba(var(--grey-rgb), 0.3);
 
   --gradient-1: linear-gradient(to right, var(--pink), var(--pink-2));

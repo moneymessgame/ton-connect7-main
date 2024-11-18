@@ -18,6 +18,7 @@
 }
 
 .special {
+	color: var(--white);
   --padding: calc(var(--main-padding) / 1.5);
   padding: var(--padding);
   border-radius: var(--radius-2);

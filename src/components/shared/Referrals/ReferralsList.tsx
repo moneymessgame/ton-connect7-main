@@ -1,12 +1,12 @@
 // src/components/ReferralsList.tsx
 import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useUser } from '@/contexts/UserContext';
 
-import styles from './referrals.module.scss';
-import { useTranslations } from 'next-intl';
 import { Title } from '../Kit';
 import { Icon } from '@/components/shared/Icon';
 import { constructName } from '@/utils/utils';
+import styles from './referrals.module.scss';
 
 interface Invitee {
 	username: string | null;

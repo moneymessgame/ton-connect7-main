@@ -1,6 +1,7 @@
 @import "@/styles/mixins";
 
 .btn {
+	color: var(--white);
   --btn-color: var(--gradient-1);
   transition: transform var(--transition-scale);
   display: inline-flex;

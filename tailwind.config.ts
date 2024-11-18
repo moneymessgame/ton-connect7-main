@@ -63,6 +63,9 @@ const config: Config = {
 				bg_popularity: 'rgb(var(--bg_popularity-rgb))',
 				bg_richness: 'rgb(var(--bg_richness-rgb))',
 				bg_attractiveness: 'rgb(var(--bg_attractiveness-rgb))',
+				bg_opacity_1: 'rgba(var(--white-rgb), 0.1)',
+				bg_opacity_2: 'rgba(var(--grey-rgb), 0.3)',
+				default_bg: 'rgba(var(--white-rgb), 0.15)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

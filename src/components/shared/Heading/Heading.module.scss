@@ -1,6 +1,7 @@
 @import "@/styles/mixins";
 
 .heading {
+	color: var(--white);
   --padding: calc(32px + 16 * (100vw - 320px) / 1080);
   margin: calc(var(--main-padding) * -1);
   margin-bottom: 0;
