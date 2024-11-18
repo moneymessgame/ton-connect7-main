@@ -150,7 +150,7 @@ export default function Ton() {
   };
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex flex-col">
 
       <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 px-4 text-center">
         <div className="flex w-full max-w-lg items-center justify-between rounded-3xl bg-pink-100 p-4">

@@ -67,7 +67,6 @@ export default function RootLayout({
 					<TonProvider>
 						<ThemeProvider
 							attribute="class"
-							defaultTheme="dark"
 							enableSystem
 							disableTransitionOnChange
 						>

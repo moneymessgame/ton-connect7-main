@@ -56,7 +56,7 @@ export default function Tracker() {
 	}
 
 	return (
-		<div className="flex min-h-screen flex-col items-center justify-center text-center">
+		<div className="flex flex-col items-center justify-center text-center">
 			{/*todo: add popup for first session if no lastPeriodDate*/}
 			{user && (
 				<PeriodTracking

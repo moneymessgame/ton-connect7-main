@@ -15,8 +15,8 @@
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
   border-radius: var(--radius-1) var(--radius-1) 0 0;
-  // padding: var(--main-padding);
-  // padding-bottom: calc(var(--nav-height) + var(--main-padding));
+  padding-top: var(--nav-height);
+  padding-bottom: calc(var(--nav-height) + var(--main-padding));
   @include no-scrollbar;
 }
 
