@@ -20,13 +20,13 @@ import { UserProvider } from '@/contexts/UserContext';
 import NextTopLoader from 'nextjs-toploader';
 import Loader from '@/components/blocks/Loader';
 
+import Menu from '@/components/blocks/Menu';
 import Navigation from '@/components/blocks/Navigation';
 
 import { NoMobile } from '@/components/blocks/NoMobile';
 
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
-import Menu from '@/components/blocks/Menu';
 
 
 const font = Montserrat({ subsets: ['cyrillic-ext'] });

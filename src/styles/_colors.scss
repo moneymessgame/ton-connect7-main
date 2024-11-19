@@ -20,6 +20,8 @@
     bg_richness: "3, 68, 3", // #034403
     bg_attractiveness: "68, 5, 5", // #440505
 		default_bg: "rgba(255, 255, 255, 0.15)" // Основной bg для плашек
+		#5d5dfe
+
   );
 
   @each $color, $rgb in $colors {

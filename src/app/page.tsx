@@ -17,7 +17,7 @@ export default function Home() {
 	useEffect(() => {
 		postEvent('web_app_set_background_color', { color: '#03070f' });
 		postEvent('web_app_set_header_color', { color: '#03070f' });
-		postEvent('web_app_setup_main_button', { is_visible: true });
+		postEvent('web_app_setup_main_button', { is_visible: false });
 	}, []);
 
 	return (
