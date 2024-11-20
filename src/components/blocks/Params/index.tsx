@@ -2,13 +2,14 @@
 
 import { useSettingsStore } from '@/stores/settings';
 import { useState } from 'react';
-import { Heading } from '../Heading';
-import { Icon } from '../Icon';
+import { Heading } from '../../shared/Heading';
+import { Icon } from '../../shared/Icon';
 import { Modal } from '../Modals';
-import { Switch } from '../Switch';
+import { Switch } from '../../shared/Switch';
 import { useTranslations } from 'next-intl';
 
 import styles from './Params.module.scss';
+import { cn } from '@/lib/utils';
 
 interface SwitcherProps {
 	icon: string;
@@ -76,7 +77,7 @@ export const Params = () => {
 				<Icon icon="material-symbols:settings" />
 			</button>
 			{isOpen && (
-				<Modal onClose={() => setIsOpen(false)} className={styles.modal}>
+				<Modal onClose={() => setIsOpen(false)} className={cn('rb-18 bg-background/40 backdrop-blur-[4px] shadow-2xl', styles.modal)}>
 					<Heading title={t('settings.title')} txt={t('settings.txt')} />
 					<ul className={styles.list}>
 						{settings.map((setting) => (

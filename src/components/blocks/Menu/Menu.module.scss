@@ -1,0 +1,56 @@
+@import '@/styles/mixins';
+
+.menu {
+	--avatar-size: calc(50px + 10 * (100vw - 320px) / 1080);
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: calc(var(--main-padding) / 3);
+	overflow: hidden;
+	@include flex(space-between);
+	gap: calc(var(--main-padding) / 2);
+	background-color: var(--bg);
+	z-index: 999999;
+	// padding-left: 5px;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		width: 70%;
+		left: 15%;
+		height: 1.5px;
+		background: linear-gradient(
+			to right,
+			rgba(var(--white-rgb), 0),
+			var(--white),
+			rgba(var(--white-rgb), 0)
+		);
+		opacity: 0.3;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 80% 15% -100%;
+		background: radial-gradient(var(--blue) 0%, transparent 65%);
+		@include blur(50px);
+		border-radius: 50%;
+		z-index: 20;
+		pointer-events: none;
+	}
+
+	& > * {
+		@include flex(flex-start);
+		z-index: 1;
+	}
+}
+
+.right {
+	--right-height: calc(38px + 12 * (100vw - 320px) / 1080);
+	height: var(--right-height);
+	background-color: var(--bg-opacity-1);
+	border-radius: 100px;
+}

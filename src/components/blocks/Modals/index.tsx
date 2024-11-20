@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import { Icon } from '../Icon';
+import { Icon } from '../../shared/Icon';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -35,7 +35,7 @@ export const Modal = ({
 
 	const modalContent = (
 		<div className={clsx(styles.overlay, { [styles.overlayFull]: full })}>
-			<div className={clsx(styles.modal, className, { [styles.full]: full })}>
+			<div className={clsx('bg-background/60 backdrop-blur-[4px] shadow-2xl', styles.modal, className, { [styles.full]: full })}>
 				<CloseButton />
 				{title && <div className={styles.title}>{title}</div>}
 				{children}

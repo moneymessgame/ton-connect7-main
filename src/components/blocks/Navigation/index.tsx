@@ -22,7 +22,7 @@ export default function Navigation() {
 	return (
 		<nav
 			className={cn(
-				'fixed bottom-0 w-full transform z-40 flex items-center justify-around  bg-gradient-to-r from-[rgba(58,49,79, 0.8)] to-[rgba(46,38,69, 0.8)] rounded-xl h-16 bg-background/40 backdrop-blur-[4px]',
+				'fixed bottom-0 w-full transform z-[999999999] flex items-center justify-around  bg-gradient-to-r from-[rgba(58,49,79, 0.8)] to-[rgba(46,38,69, 0.8)] rounded-xl h-18 bg-background/40 backdrop-blur-[4px]',
 				styles.nav
 			)}
 		>
