@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Package, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import CharacterCard from './character-card'
 
 const rarityColors = {
   common: 'bg-gray-400',
@@ -34,15 +35,15 @@ export default function SecondPack() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-700">
-			<div className="min-w-full">
+    <div className="flex flex-col items-center justify-center min-w-full min-h-full ">
+			<div className="min-w-full h-full">
         <AnimatePresence>
           {!isOpening && cards.length === 0 && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center h-full"
             >
               <Package className="w-32 h-32 text-yellow-500 mb-4" />
               <Button onClick={openPack} className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded">
@@ -60,7 +61,7 @@ export default function SecondPack() {
           />
         )}
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 col-start-1">
           <AnimatePresence>
             {cards.map((card, index) => (
               <motion.div
@@ -73,7 +74,8 @@ export default function SecondPack() {
                 className={`relative aspect-[2/3] rounded-lg ${rarityColors[card.rarity]} shadow-lg overflow-hidden`}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Sparkles className="w-12 h-12 text-white" />
+                  
+                  <CharacterCard  />
                 </div>
                 <div className="absolute bottom-2 left-2 right-2 text-center text-white text-xs font-bold bg-black bg-opacity-50 rounded py-1">
                   {card.rarity.charAt(0).toUpperCase() + card.rarity.slice(1)}
