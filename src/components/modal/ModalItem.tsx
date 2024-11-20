@@ -49,5 +49,3 @@ const ModalItem: React.FC<MItemProps> = ({ image, reward, title, onClick }) => {
 };
 
 export default ModalItem;
-
-// MenuItem

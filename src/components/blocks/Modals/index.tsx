@@ -28,7 +28,7 @@ export const Modal = ({
 	const CloseButton = () => {
 		return (
 			<button className={styles.close} onClick={handleClose} type="button">
-				<Icon icon="ph:x"  />
+				<Icon icon="ph:x" />
 			</button>
 		);
 	};
