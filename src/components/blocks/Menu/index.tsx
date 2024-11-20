@@ -4,8 +4,9 @@ import { useInitData } from '@telegram-apps/sdk-react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Timer, Coins, UserPlus, PanelBottomOpen, User } from 'lucide-react';
+import { Home, Timer, Coins, UserPlus, PanelBottomOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { User } from '@/components/shared/User';
 
 import styles from './Menu.module.scss';
 import { Params } from '@/components/blocks/Params';
@@ -28,9 +29,10 @@ export default function Menu() {
 
     return (
         <header className={cn('h-18 bg-background/40 backdrop-blur-[4px] shadow-2xl', styles.menu)}>
-            <User />
+            <div>1</div>
             <div className={styles.right}>
                 {/* <Exchange />*/}
+								<User />
                 <Params />
             </div>
         </header>

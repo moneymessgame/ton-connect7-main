@@ -1,6 +1,6 @@
 @import "@/styles/mixins";
 
-.left {
+.right {
   --gap: calc(var(--main-padding) / 1.5);
   flex: 1;
   font-weight: 500;
@@ -9,7 +9,7 @@
 
 .name {
   position: absolute;
-  left: calc(var(--avatar-size) + var(--gap));
+  right: calc(var(--avatar-size) + var(--gap));
   width: calc(100% - var(--avatar-size) - var(--gap));
   @include ellipsis;
 
@@ -21,4 +21,16 @@
     display: block;
     margin-top: 0.15em;
   }
+}
+
+.txt {
+	flex: 1;
+	font-weight: 800px;
+
+	small {
+		display: block;
+		font-weight: 400;
+		color: var(--grey);
+		font-size: calc(10px + 1 * (100vw - 320px) / 1080);
+	}
 }

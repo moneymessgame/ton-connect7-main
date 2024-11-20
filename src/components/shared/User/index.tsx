@@ -1,11 +1,12 @@
 'use client';
-
 import { useUserStore } from '@/stores/user';
 import { Avatar } from '../Avatar';
 import styles from './User.module.scss';
 import { useEffect } from 'react';
 import { useInitData } from '@telegram-apps/sdk-react';
 import { constructName } from '@/utils/utils';
+import { cn } from '@/lib/utils';
+import Dropdown from '@/components/ui2/Dropdown';
 
 export const User = () => {
   const { user, fetchUser } = useUserStore();
@@ -23,11 +24,15 @@ export const User = () => {
   const name = constructName(firstName, lastName, username);
 
   return (
-    <div className={styles.left}>
-      <Avatar src={photoUrl} name={name} />
-      <div>
-        {name} <small>(Tracker)</small>
+    <div className="flex gap-3">
+      <div className={cn('flex flex-col items-end justify-center', styles.txt)}>
+        <strong>{name}</strong>
+        <small>Tracker</small>
       </div>
+      {/* Теперь оборачиваем Avatar с Dropdown */}
+      <Dropdown>
+        <Avatar src={photoUrl} name={name} />
+      </Dropdown>
     </div>
   );
 };
