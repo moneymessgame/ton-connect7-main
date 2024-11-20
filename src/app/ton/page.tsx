@@ -164,17 +164,17 @@ export default function Ton() {
   return (
     <div className="flex h-screen flex-col">
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 px-4 text-center">
-        <div className="flex w-full max-w-lg items-center justify-between rounded-3xl bg-default_bg p-4">
-					<Wallet className="text-white" size={32} />
+      <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 px-4  text-center">
+        <div className="flex w-full max-w-lg items-center justify-between container-style p-4">
+					<Wallet className="text-white" size={25} strokeWidth={1.5} />
           <p className="mx-4 flex-1 text-white">{t('connect_wallet')}</p>
           <TonConnectButton />
         </div>
 
 				{isBlockchainInited ? (
-					<div className="flex w-full max-w-lg flex-col items-center justify-center rounded-3xl bg-green-100 p-4">
+					<div className="flex w-full max-w-lg flex-col items-center justify-center rounded-xl  bg-green-100 p-4">
 						<div className="flex w-full items-center justify-between">
-							<Check className="text-green-500" size={32} />
+							<Check className="text-green-500" size={25} strokeWidth={1.5} />
 							<p className="text-lg font-semibold text-green-500">
 								{t('account_blockchain')}
 							</p>
@@ -185,17 +185,17 @@ export default function Ton() {
 					</div>
 				) : (
 					<div
-						className="mb-4 flex w-full max-w-lg flex-col items-center justify-between rounded-3xl bg-default_bg p-4"
+						className="mb-4 flex w-full max-w-lg flex-col items-center justify-between container-style p-4"
 						onClick={handleInitBlockchain}
 					>
 						<div className="flex w-full items-center justify-between">
 							{loading ? (
 								<div className="size-8 animate-spin rounded-full border-y-2 border-blue-500" />
 							) : (
-								<Star className="text-white" size={32} />
+								<Star className="text-white" size={25} strokeWidth={1.5} />
 							)}
 							<p className="mx-4 flex-1 text-white">{t('init_blockchain')}</p>
-							<ChevronRight className="text-white" size={24} />
+							<ChevronRight className="text-white" size={25} strokeWidth={1.5} />
 						</div>
 						<p className="mt-2 text-xl font-semibold text-white">
 							{t('token_balance')}
@@ -207,7 +207,7 @@ export default function Ton() {
 				) : (
 					<div className="flex w-full max-w-lg flex-col items-center justify-center">
 						<div className="mb-4 flex w-full max-w-lg items-center justify-between rounded-3xl bg-purple-100 p-4">
-							<ServerIcon className="text-purple-500" size={32} />
+							<ServerIcon className="text-purple-500" size={25} strokeWidth={1.5} />
 							<p className="mx-4 flex-1 text-header2 text-deep-dark">
 								{t('data_storage')}
 							</p>

@@ -35,8 +35,8 @@ export default function Navigation() {
 						key={item.href}
 						href={item.href}
 						
-						className={`relative flex flex-col items-center justify-center gap-1 transition-colors font-light ${
-							isActive ? 'text-[#abdbff]' : 'text-[#fff]'
+						className={`relative flex flex-col items-center justify-center gap-1 transition-colors font-light mb-1 ${
+							isActive ? 'text-active_color' : 'text-[#fff]'
 						}`}
 						prefetch={false}
 					>
@@ -53,7 +53,7 @@ export default function Navigation() {
 						<div className="relative flex items-center justify-center h-12 w-12  transition-all">
 							<Icon
 								className={`h-10 w-10 pt-4 stroke-1 ${
-									isActive ? 'text-[#abdbff]' : 'text-[#fff]'
+									isActive ? 'text-active_color' : 'text-[#fff]'
 								}`}
 							/>
 						</div>

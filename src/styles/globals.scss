@@ -58,6 +58,12 @@
 	}
 }
 
+@layer components {
+	.container-style {
+		@apply rounded-xl bg-gradient-to-t from-[#] to-[rgba(46,38,69,0.8)] bg-background/40;
+	}
+}
+
 
 /* Import base */
 

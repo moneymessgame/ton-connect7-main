@@ -24,10 +24,11 @@
 	@include flex(space-between, center);
 	gap: var(--padding);
 
-	.illu {
+	.icon {
 		width: var(--check-size);
 		height: var(--check-size);
 		border-radius: 50%;
+
 		background-color: var(--bg-opacity-1);
 		@include flex;
 		font-size: calc(var(--check-size) / 2);

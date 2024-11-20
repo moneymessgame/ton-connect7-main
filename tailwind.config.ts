@@ -53,6 +53,7 @@ const config: Config = {
 				},
 				grey: 'rgb(var(--grey-rgb))',
 				white: 'rgb(var(--white-rgb))',
+				active_color: 'rgb(var(--active_color-rgb))',
 				blue_ui: 'rgb(var(--blue_ui-rgb))',
 				dark_blue: 'rgb(var(--dark_blue-rgb))',
 				dominion: 'rgb(var(--dominion-rgb))',
@@ -92,7 +93,17 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [require('tailwindcss-animate')],
+	plugins: [
+    require('tailwindcss-animate'),
+    // Добавьте сюда кастомное правило для container-style
+    function ({ addComponents }) {
+      addComponents({
+        '.container-style': {
+          '@apply rounded-xl bg-gradient-to-r from-[rgba(58,49,79,0.8)] to-[rgba(46,38,69,0.8)] bg-background/40': '',
+        },
+      });
+    },
+  ],
 };
 
 export default config;

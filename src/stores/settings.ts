@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware"
 type SettingsStore = {
   vibration: boolean
   tapAnimation: boolean
-  numberAnimaton: boolean
+  numberAnimation: boolean
   toggleVibration: () => void
   toggleTapAnimation: () => void
   toggleNumberAnimation: () => void
@@ -16,12 +16,12 @@ export const useSettingsStore = create<SettingsStore>(
     (set, get) => ({
       vibration: true,
       tapAnimation: true,
-      numberAnimaton: true,
+      numberAnimation: true,
       toggleVibration: () => set((state) => ({ vibration: !state.vibration })),
       toggleTapAnimation: () =>
         set((state) => ({ tapAnimation: !state.tapAnimation })),
       toggleNumberAnimation: () =>
-        set((state) => ({ numberAnimaton: !state.numberAnimaton }))
+        set((state) => ({ numberAnimation: !state.numberAnimation }))
     }),
     {
       name: "settings"

@@ -32,4 +32,13 @@
 
   /* Nav */
   --nav-height: calc(70px + 25 * (100vw - 320px) / 1080);
+
+	/* Container (Плашка) */
+	--container-style: 
+	rounded-xl 
+	bg-gradient-to-t 
+	from-[rgba(58,49,79,0.8)] 
+	to-[rgba(46,38,69,0.8)] 
+	bg-background/40 
+	// backdrop-blur-[4px];
 }

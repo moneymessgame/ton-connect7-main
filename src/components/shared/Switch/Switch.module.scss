@@ -9,7 +9,7 @@
 
   input:checked + label {
     &::after {
-      background-color: var(--blue_ui);
+      background-color: var(--active_color);
       box-shadow: 0 5px 25px rgba(var(--white-rgb), 0.2);
       left: calc(100% - var(--gap));
       transform: scale(1) translateX(-100%);
