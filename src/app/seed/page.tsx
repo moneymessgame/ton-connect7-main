@@ -1,5 +1,4 @@
 import PlayerSeeder from '@/components/mafstat/player-seeder'
-import { Button } from '@/components/ui';
 
 export default function SeedPlayersPage() {
   return (
@@ -17,8 +16,7 @@ export default function SeedPlayersPage() {
 
 			<div className="w-full max-w-md mx-auto text-white bg-[#5d5dfe] my-5 p-5 rounded-2xl">
 				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore rem commodi eaque libero animi molestias velit officia maxime? Totam, minima.</p>
-			</div>
-			
+			</div>			
     </div>
   )
 }

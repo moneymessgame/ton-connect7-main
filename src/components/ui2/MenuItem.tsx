@@ -16,7 +16,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ image, title, reward, onClick, colo
 
   return (
     <div
-      className="flex w-full cursor-pointer items-center gap-4 rounded-2xl p-4 transition duration-300 ease-in-out bg-default_bg hover:bg-opacity-80"
+      className="flex w-full cursor-pointer items-center gap-4 rounded-2xl p-4 transition duration-300 ease-in-out container-style"
       onClick={onClick}>
       <img src={image} alt="Avatar" className="size-10 shrink-0 rounded-full md:size-12" />
       <div className="flex flex-1 items-center justify-between overflow-hidden">
@@ -28,7 +28,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ image, title, reward, onClick, colo
           <p className="truncate whitespace-nowrap text-left text-sm font-medium">{title}</p>
           <div className="flex items-center">
             <span className="pr-1 text-lg font-bold md:text-xl">{reward}</span>
-            <Coin className="size-6 md:size-8" type="white" />
+            <Coin className="size-4 md:size-6" type="white" />
           </div>
         </div>
         <ChevronRightIcon className="size-5 shrink-0 text-white opacity-90 md:size-6" />

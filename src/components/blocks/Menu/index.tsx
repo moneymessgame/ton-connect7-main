@@ -20,7 +20,7 @@ export default function Menu() {
 	const navItems = [
 		{ href: '/', icon: Home, label: 'Home' },
 		{ href: '/tracker', icon: Timer, label: 'Tracker' },
-		{ href: '/seed', icon: Timer, label: 'test' },
+		{ href: '/seed', icon: Timer, label: 'seed' },
 		{ href: '/referrals', icon: UserPlus, label: 'Referrals' },
 		{ href: '/socials', icon: PanelBottomOpen, label: 'Socials' },
 		{ href: '/ton', icon: Coins, label: 'TON' },

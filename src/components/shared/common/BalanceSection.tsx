@@ -22,7 +22,7 @@ const BalanceSection: React.FC<BalanceSectionProps> = ({
         </div>
       </div>
       <p className="mt-2 text-body2 opacity-60">
-        Зарабатывайте Fem Coin и обменяйте его на другие токены или получайте скидку на консультации
+        Зарабатывайте MoneyMess Coin и обменяйте его на другие токены или получайте скидку на консультации
         и многое другое
       </p>
       <div className="flex flex-col items-center">

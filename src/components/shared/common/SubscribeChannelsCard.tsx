@@ -70,7 +70,7 @@ const SubscribeChannelsCard: React.FC = () => {
 
 	const renderContent = () => (
 		<div className="text-center mb-5">
-			<p className="text-2xl font-bold mb-">
+			<p className="text-2xl font-black mb-1">
 				{t('subscribe_channels_card.title')}
 			</p>
 			<p className="px-2 text-sm">{t('subscribe_channels_card.description')}</p>

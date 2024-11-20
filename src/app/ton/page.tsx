@@ -162,7 +162,7 @@ export default function Ton() {
 	};
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex flex-col">
 
       <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 px-4  text-center">
         <div className="flex w-full max-w-lg items-center justify-between container-style p-4">
@@ -172,13 +172,13 @@ export default function Ton() {
         </div>
 
 				{isBlockchainInited ? (
-					<div className="flex w-full max-w-lg flex-col items-center justify-center rounded-xl  bg-green-100 p-4">
+					<div className="flex w-full max-w-lg flex-col items-center justify-center bg-green-900 rounded-xl p-4 text-green-100">
 						<div className="flex w-full items-center justify-between">
-							<Check className="text-green-500" size={25} strokeWidth={1.5} />
-							<p className="text-lg font-semibold text-green-500">
+							<Check size={25} strokeWidth={1.5} />
+							<p className="text-lg font-semibold">
 								{t('account_blockchain')}
 							</p>
-							<p className="text-xl font-semibold text-green-500">
+							<p className="text-xl font-semibold">
 								{t('token_balance')}
 							</p>
 						</div>
@@ -206,20 +206,20 @@ export default function Ton() {
 					<div />
 				) : (
 					<div className="flex w-full max-w-lg flex-col items-center justify-center">
-						<div className="mb-4 flex w-full max-w-lg items-center justify-between rounded-3xl bg-purple-100 p-4">
-							<ServerIcon className="text-purple-500" size={25} strokeWidth={1.5} />
+						<div className="mb-4 flex w-full max-w-lg items-center justify-between container-style p-4">
+							<ServerIcon className="text-white" size={25} strokeWidth={1.5} />
 							<p className="mx-4 flex-1 text-header2 text-deep-dark">
 								{t('data_storage')}
 							</p>
 							<AppRoot>
-								<SegmentedControl className="relative mx-auto flex max-w-lg justify-between overflow-hidden rounded-lg bg-white p-3 shadow-md">
+								<SegmentedControl className="relative mx-auto flex max-w-lg justify-between overflow-hidden rounded-lg bg-black p-3 shadow-md">
 									<SegmentedControl.Item
 										className={`relative z-10 text-center ${
-											selected === 0 ? 'bg-blue-500 text-white' : ''
+											selected === 0 ? 'bg-[#0098e9] text-white font-light rounded-3xl px-2' : ''
 										}`}
 										selected={selected === 0}
 										onClick={() => handleSelect(0)}
-										style={{ borderRadius: '8px' }}
+										style={{ borderRadius: '100px' }}
 									>
 										<label
 											className={`block cursor-pointer p-2 font-semibold transition-colors duration-200 ${
@@ -236,11 +236,11 @@ export default function Ton() {
 
 									<SegmentedControl.Item
 										className={`relative z-10 text-center ${
-											selected === 2 ? 'bg-blue-500 text-white' : ''
+											selected === 2 ? 'bg-[#0098e9] text-white font-light rounded-3xl  px-2' : ''
 										}`}
 										selected={selected === 2}
 										onClick={() => handleSelect(2)}
-										style={{ borderRadius: '8px' }}
+										style={{ borderRadius: '100px' }}
 									>
 										<label
 											className={`block cursor-pointer p-2 font-semibold transition-colors duration-200 ${
@@ -259,7 +259,7 @@ export default function Ton() {
 						</div>
 						<div>
 							<div>{t('copy_key')}</div>
-							<button onClick={copyToPrivateKey}>
+							<button onClick={copyToPrivateKey} className="my-2 bg-[#0098e9] rounded-3xl px-5 py-2 text-white">
 								{copySuccess || t('copy')}
 							</button>
 						</div>

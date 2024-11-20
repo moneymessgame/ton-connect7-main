@@ -21,7 +21,7 @@ const challenges: Challenge[] = [
     description: 'challenges.challenge1.description',
     reward: 700,
     refLink: 'https://t.me/moneymessgame',
-		image: '/images/femaleton.jpg',
+		image: '/logo.png',
     chatId: '-1002233420174',
   },
   {
@@ -30,7 +30,7 @@ const challenges: Challenge[] = [
     description: 'challenges.challenge2.description',
     reward: 450,
     refLink: 'https://t.me/moneymesschannel',
-		image: '/images/femaleton.jpg',
+		image: '/logo.png',
     chatId: '-1002241667149',
   },
   {
@@ -39,7 +39,7 @@ const challenges: Challenge[] = [
     description: 'challenges.challenge3.description',
     reward: 550,
     refLink: 'https://t.me/moneymesschannelru',
-		image: '/images/femaleton.jpg',
+		image: '/logo.png',
     chatId: '-1002220711086',
   },
 ];
