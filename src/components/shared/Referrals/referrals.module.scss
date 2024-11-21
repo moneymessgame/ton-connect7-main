@@ -20,8 +20,8 @@
 .special {
 	--padding: calc(var(--main-padding) / 1.5);
 	padding: var(--padding);
-	border-radius: var(--radius-2);
-	background-color: var(--bg-opacity-1);
+	// border-radius: var(--radius-2);
+	// background-color: var(--bg-opacity-1);
 	@include flex(flex-start);
 	gap: calc(var(--main-padding) / 1.5);
 
@@ -53,7 +53,7 @@
 
 .list {
 	color: var(--white);
-	
+
 	@include flex(flex-start, stretch, column);
 	gap: var(--main-padding);
 
@@ -67,6 +67,8 @@
 
 	&Title {
 		color: var(--white);
+		font-size: 1rem;   
+		line-height: 1.5rem; 
 		small {
 			color: var(--white);
 			font-weight: 500;
@@ -77,8 +79,6 @@
 
 	&No {
 		text-align: center;
-		background-color: var(--bg-opacity-1);
-		border-radius: var(--radius-2);
 		padding: 1em;
 		color: var(--grey);
 	}

@@ -18,10 +18,10 @@ type CardWithMenuProps = {
 
 const CardWithMenu: React.FC<CardWithMenuProps> = ({ gradient, renderContent, menuItems }) => {
   return (
-    <Card gradient={gradient} className="mx-auto w-full max-w-md">
-      <div className="rounded-2xl p-2 text-white">
-        {renderContent()}
-        <div className="w-full space-y-2 pt-2">
+    <Card gradient={gradient} className="w-full">
+      <div className="rounded-2xl text-white">
+        {renderContent()} 
+        <div className="w-full space-y-2">
           {menuItems.map((item, index) => (
             <div key={index} className="w-full">
               <MenuItem

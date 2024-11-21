@@ -21,8 +21,6 @@
 	color: var(--white);
   --padding: calc(var(--main-padding) / 1.5);
   padding: var(--padding);
-  border-radius: var(--radius-2);
-  background-color: var(--bg-opacity-1);
   @include flex(flex-start);
   gap: calc(var(--main-padding) / 1.5);
 

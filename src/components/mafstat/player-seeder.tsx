@@ -37,7 +37,7 @@ export default function PlayerSeeder() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto text-white bg-default_bg">
+    <Card className="w-full text-white container-style">
       <CardHeader>
         <CardTitle>Player Seeder</CardTitle>
         <CardDescription>Upload a JSON file to seed player data into the database.</CardDescription>

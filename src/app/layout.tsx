@@ -28,7 +28,6 @@ import { NoMobile } from '@/components/blocks/NoMobile';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 
-
 const font = Montserrat({ subsets: ['cyrillic-ext'] });
 
 export const viewport: Viewport = {
@@ -57,12 +56,7 @@ export default function RootLayout({
 					strategy="beforeInteractive"
 				/>
 			</head>
-			<body
-				className={cn(
-					'',
-					font.className
-				)}
-			>
+			<body className={cn('', font.className)}>
 				<LangProvider>
 					<TonProvider>
 						<ThemeProvider
@@ -80,13 +74,13 @@ export default function RootLayout({
 											showSpinner={false}
 											zIndex={999999}
 										/>
-										<main className={styles.layout}>
-											<div className={styles.main} data-ref="main">
+										<div className={styles.layout}>
 												<Menu />
+											<main className={styles.main} data-ref="main">
 												{children}
+											</main>
 												<Navigation />
-											</div>
-										</main>
+										</div>
 										<Toaster />
 										<div id="modal-root" />
 										{/* <NoMobile /> */}

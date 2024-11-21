@@ -14,7 +14,6 @@ import styles from './referrals.module.scss';
 import { Button, ButtonGroup } from '@/components/shared/Button';
 import { toast } from 'sonner';
 import { Icon } from '@/components/shared/Icon';
-import { SectionBadge } from '@/components/ui';
 
 const CardFriend = ({
 	title,
@@ -73,7 +72,7 @@ const Referrals: React.FC = () => {
 					className={styles.invite}
 					href={`https://t.me/share/url?url=${inviteLink}`}
 				>
-					{t('friends.list.invite')}
+					{t('friends.list.invite_card')}
 				</Button>
 
 				<Button
@@ -83,7 +82,6 @@ const Referrals: React.FC = () => {
 					onClick={copy}
 				/>
 			</ButtonGroup>
-				<SectionBadge title="Introduction" />
 			<div>
 				{/* <RefLink /> */}
 				<CardSpecial

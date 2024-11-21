@@ -7,6 +7,7 @@ import { Title } from '../Kit';
 import { Icon } from '@/components/shared/Icon';
 import { constructName } from '@/utils/utils';
 import styles from './referrals.module.scss';
+import { cn } from '@/lib/utils';
 
 interface Invitee {
 	username: string | null;
@@ -21,7 +22,7 @@ interface Referral {
 
 const CardFriend = ({ title }: { title: string }) => {
 	return (
-		<div className={styles.special}>
+		<div className={cn('container-style', styles.special)}>
 			<img src="/images/avatar.png" width={73} height={79} alt={title} />
 			<div>
 				<h3>{title}</h3>
@@ -108,7 +109,7 @@ const ReferralsList: React.FC = () => {
 				/>
 			))}
 			{referrals.length === 0 && (
-				<div className={styles.listNo}>{t('list.no')}</div>
+				<div className={cn('container-style', styles.listNo)}>{t('list.no')}</div>
 			)}
 		</div>
 	);

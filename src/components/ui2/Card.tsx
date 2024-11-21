@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({ children, gradient, className = '', radius 
   return (
     <Squircle
       className={classNames(
-        'flex w-full flex-col items-stretch justify-start gap-4 p-6',
+        'flex w-full flex-col items-stretch justify-start gap-4',
         gradientClass,
         className
       )}

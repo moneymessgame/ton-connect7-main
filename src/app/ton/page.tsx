@@ -164,7 +164,7 @@ export default function Ton() {
   return (
     <div className="flex flex-col">
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 px-4  text-center">
+      <main className="flex w-full flex-1 flex-col items-center justify-center space-y-4 text-center">
         <div className="flex w-full max-w-lg items-center justify-between container-style p-4">
 					<Wallet className="text-white" size={25} strokeWidth={1.5} />
           <p className="mx-4 flex-1 text-white">{t('connect_wallet')}</p>
