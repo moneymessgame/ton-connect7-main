@@ -20,7 +20,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
   const gradient = color ? color : 'blue';
 
   return (
-    <Card gradient={gradient} className="py-0">
+    <Card className="py-0">
       <div className="flex w-full flex-row items-center rounded-xl p-4">
         <div className="flex size-6 shrink-0 items-center justify-center rounded-full">
           <Icon className="text-white" size={16} />

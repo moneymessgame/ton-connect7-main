@@ -80,7 +80,6 @@ const SubscribeChannelsCard: React.FC = () => {
 	return (
 		<>
 			<CardWithMenu
-				gradient="green"
 				renderContent={renderContent}
 				menuItems={menuItems}
 			/>

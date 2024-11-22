@@ -7,7 +7,6 @@ interface RewardTextProps {
   size?: 's' | 'm' | 'l' | 'xl';
   label?: string;
   type?: 'default' | 'white';
-  gradient?: 'blue' | 'pink' | 'purple' | 'orange' | 'green';
   className?: string;
 }
 
@@ -16,7 +15,6 @@ const RewardText: React.FC<RewardTextProps> = ({
   label,
   size = 'xl',
   type = 'white',
-  gradient,
   className,
 }) => {
   const typeStyles = {
@@ -42,7 +40,7 @@ const RewardText: React.FC<RewardTextProps> = ({
     <div
       className={`relative flex w-full items-center justify-center gap-2 ${typeStyles[size].text}`}>
       <span className="font-bold">{value}</span>
-      <Coin label={label} type={type} gradient={gradient} className={typeStyles[size].coinSize} />
+      <Coin label={label} type={type} className={typeStyles[size].coinSize} />
     </div>
   );
 };

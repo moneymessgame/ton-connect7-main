@@ -11,14 +11,13 @@ type MenuItemProps = {
 };
 
 type CardWithMenuProps = {
-  gradient: 'blue' | 'pink' | 'purple' | 'orange' | 'green';
   renderContent: () => ReactNode;
   menuItems: MenuItemProps[];
 };
 
-const CardWithMenu: React.FC<CardWithMenuProps> = ({ gradient, renderContent, menuItems }) => {
+const CardWithMenu: React.FC<CardWithMenuProps> = ({ renderContent, menuItems }) => {
   return (
-    <Card gradient={gradient} className="w-full">
+    <Card className="w-full">
       <div className="rounded-2xl text-white">
         {renderContent()} 
         <div className="w-full space-y-2">
