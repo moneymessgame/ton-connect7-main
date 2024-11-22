@@ -131,7 +131,6 @@ const Farming: React.FC<object> = () => {
 				setIsFarming={setIsFarming}
 				onFinishFarming={handleFarmingFinish} // Forward the finish handler
 			/>
-			{/* Bottom Section */}
 			<div className="flex size-full flex-row items-stretch container-style gap-3">
 				<SubscribeCard />
 				<ShareCard />

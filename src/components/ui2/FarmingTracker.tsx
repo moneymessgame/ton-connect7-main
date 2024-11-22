@@ -113,16 +113,16 @@ const FarmingTracker: React.FC<FarmingTrackerProps> = ({
             <h3 className="text-gradient-purple text-base font-medium">{t('self_care_balance')}</h3>
           )}
           {isFarming && (
-            <h3 className="text-gradient-purple text-base font-medium">
+            <h3 className="text-base font-medium">
               {t('farming_care', { rate: rewardRatePerHour.toFixed(1) })}
             </h3>
           )}
         </div>
         <div className="flex h-10 w-full flex-row items-center justify-center gap-2 p-0">
-          <span className="text-4xl font-bold">
+          <span className="text-4xl font-bold pr-5">
             {farmingCounter.toString().padStart(6, '0').split('').map(renderDigit)}
           </span>
-          <Coin label="F" type="default" />
+          <Coin label="MMess" type="default" />
         </div>
       </div>
       {isFarming && (

@@ -1,11 +1,9 @@
 import React from 'react';
 
-import ActionCard from '@/components/shared/common/ActionCard';
 import BalanceSection from '@/components/shared/common/BalanceSection';
 import Farming from '@/components/shared/common/Farming';
 import HeaderTracker from '@/components/shared/common/HeaderTracker';
 import InviteUserCard from './InviteUserCard';
-import SubscribeChannelsCard from './SubscribeChannelsCard';
 import TellAboutYourselfCard from './TellAboutYourselfCard';
 import Card from '@/components/ui2/Card';
 
@@ -45,7 +43,6 @@ const PeriodTracking: React.FC<PeriodTrackingProps> = ({
 			<main className="flex w-full flex-1 flex-col items-center py-8">
 				<Farming />
 				<div className="mb-20 mt-6 w-full max-w-md space-y-4">
-					{/* <SubscribeChannelsCard /> */}
 					{/* <InviteUserCard /> */}
 					{/* <TellAboutYourselfCard /> */}
 				</div>

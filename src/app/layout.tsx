@@ -75,11 +75,11 @@ export default function RootLayout({
 											zIndex={999999}
 										/>
 										<div className={styles.layout}>
-												<Menu />
+											<Menu />
 											<main className={styles.main} data-ref="main">
 												{children}
 											</main>
-												<Navigation />
+											<Navigation />
 										</div>
 										<Toaster />
 										<div id="modal-root" />

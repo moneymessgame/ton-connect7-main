@@ -30,7 +30,7 @@ type UserStore = {
 export const useUserStore = create<UserStore>()(
   persist(
     (set, get) => ({
-      user: null,
+      user: null, // По умолчанию данные о пользователе отсутствуют
       loading: false,
 
       fetchUser: async (telegramId: string) => {
@@ -52,14 +52,14 @@ export const useUserStore = create<UserStore>()(
           set({ user: null, loading: false });
         }
       },
-
+			// Функция для ручной установки данных о пользователе. Если данные уже есть, их можно записать без запроса:
       setUser: (user) => set({ user }),
 
       clearUser: () => set({ user: null }),
     }),
     {
       name: 'user-storage',
-      partialize: (state) => ({ user: state.user }),
+      partialize: (state) => ({ user: state.user }), // Указывает, что из всего состояния (state) в localStorage нужно сохранять только user
     }
   )
 );

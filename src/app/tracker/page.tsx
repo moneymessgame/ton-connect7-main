@@ -2,76 +2,77 @@
 
 import Loader from '@/components/shared/common/Loader';
 import { useUser } from '@/contexts/UserContext';
-import { useEffect } from 'react';
-
+import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import PeriodTracking from '@/components/shared/common/PeriodTracking';
+import dynamic from 'next/dynamic';
+
+// Ленивый импорт для PeriodTracking
+const PeriodTracking = dynamic(() => import('@/components/shared/common/PeriodTracking'), {
+  ssr: false, // Отключаем серверный рендеринг для этого компонента
+  loading: () => <Loader /> // Показываем загрузчик, пока компонент не загружен
+});
 
 export default function Tracker() {
-	const { user, loading, refetchUser, lastPeriodDate } = useUser();
-	const router = useRouter();
+  const { user, loading, refetchUser, lastPeriodDate } = useUser();
+  const router = useRouter();
 
-	const handlePeriodDateChange = () => {
-		console.log('Period date change clicked');
-		router.push('/calendar');
-	};
+  // Обработчики, мемоизированные через useCallback
+  const handlePeriodDateChange = useCallback(() => {
+    console.log('Period date change clicked');
+    router.push('/calendar');
+  }, [router]);
 
-	const handleStartFarming = () => {
-		console.log('Start farming clicked');
-		// Implement the start farming logic here
-	};
+  const handleStartFarming = useCallback(() => {
+    console.log('Start farming clicked');
+    // Реализуйте логику старта фермерства
+  }, []);
 
-	const handleViewInfo = () => {
-		console.log('View info clicked');
-		// Implement the view info logic here
-	};
+  const handleViewInfo = useCallback(() => {
+    console.log('View info clicked');
+    // Реализуйте логику отображения информации
+  }, []);
 
-	const handleShareData = () => {
-		console.log('Share data clicked');
-		// Implement the share data logic here
-	};
+  const handleShareData = useCallback(() => {
+    console.log('Share data clicked');
+    // Реализуйте логику обмена данными
+  }, []);
 
-	const handleInviteUser = () => {
-		console.log('Invite user clicked');
-		// Implement the invite user logic here
-	};
+  const handleInviteUser = useCallback(() => {
+    console.log('Invite user clicked');
+    // Реализуйте логику приглашения пользователя
+  }, []);
 
-	const handleSubscribeChannels = () => {
-		console.log('Subscribe to channels clicked');
-		// Implement the subscribe channels logic here
-	};
+  const handleSubscribeChannels = useCallback(() => {
+    console.log('Subscribe to channels clicked');
+    // Реализуйте логику подписки на каналы
+  }, []);
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			if (loading) {
-				refetchUser();
-			}
-		}, 2000);
+  // Убираем лишнюю задержку в refetchUser
+  useEffect(() => {
+    if (loading) {
+      refetchUser();
+    }
+  }, [loading, refetchUser]);
 
-		return () => clearTimeout(timer);
-	}, [loading, refetchUser]);
+  if (loading) {
+    return <Loader />;
+  }
 
-	if (loading) {
-		return <Loader />;
-	}
-
-	return (
-		<div className="flex flex-col items-center justify-center text-center">
-			{/*todo: add popup for first session if no lastPeriodDate*/}
-			{user && (
-				<PeriodTracking
-					lastMenstruationDate={
-						lastPeriodDate ? new Date(lastPeriodDate) : undefined
-					}
-					tokenBalance={user.tokenBalance}
-					onPeriodDateChange={handlePeriodDateChange}
-					onStartFarming={handleStartFarming}
-					onViewInfo={handleViewInfo}
-					onShareData={handleShareData}
-					onInviteUser={handleInviteUser}
-					onSubscribeChannels={handleSubscribeChannels}
-				/>
-			)}
-		</div>
-	);
+  return (
+    <div className="flex flex-col items-center justify-center text-center">
+      {/*todo: add popup for first session if no lastPeriodDate*/}
+      {user && (
+        <PeriodTracking
+          lastMenstruationDate={lastPeriodDate ? new Date(lastPeriodDate) : undefined}
+          tokenBalance={user.tokenBalance}
+          onPeriodDateChange={handlePeriodDateChange}
+          onStartFarming={handleStartFarming}
+          onViewInfo={handleViewInfo}
+          onShareData={handleShareData}
+          onInviteUser={handleInviteUser}
+          onSubscribeChannels={handleSubscribeChannels}
+        />
+      )}
+    </div>
+  );
 }
