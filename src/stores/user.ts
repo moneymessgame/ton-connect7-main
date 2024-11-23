@@ -36,8 +36,9 @@ export const useUserStore = create<UserStore>()(
       fetchUser: async (telegramId: string) => {
         const { user } = get();
         if (user) return;
-
+				
         set({ loading: true });
+
         try {
           const response = await fetch(`/api/userByTg?telegramId=${telegramId}`);
           if (response.ok) {

@@ -1,4 +1,3 @@
-// src/components/ReferralsList.tsx
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useUser } from '@/contexts/UserContext';
@@ -6,19 +5,9 @@ import { useUser } from '@/contexts/UserContext';
 import { Title } from '../Kit';
 import { Icon } from '@/components/shared/Icon';
 import { constructName } from '@/utils/utils';
+import { useReferralsStore } from '@/stores/referrals'; // Подключаем zustand store
 import styles from './referrals.module.scss';
 import { cn } from '@/lib/utils';
-
-interface Invitee {
-	username: string | null;
-}
-
-interface Referral {
-	invitee: Invitee | null;
-	firstName: string | null;
-	lastName: string | null;
-	username: string | null;
-}
 
 const CardFriend = ({ title }: { title: string }) => {
 	return (
@@ -36,61 +25,46 @@ const CardFriend = ({ title }: { title: string }) => {
 
 const ReferralsList: React.FC = () => {
 	const { user } = useUser();
-	const [referrals, setReferrals] = useState<Referral[]>([]);
-	const [loading, setLoading] = useState<boolean>(true);
 	const t = useTranslations();
 	const [pending, setPending] = useState(false);
 
+	// Zustand store
+	const referrals = useReferralsStore((state) => state.referrals);
+	const loading = useReferralsStore((state) => state.loading);
+	const fetchReferrals = useReferralsStore((state) => state.fetchReferrals);
+
+	// Загрузка данных при первом рендере, только если их нет
+	useEffect(() => {
+		if (user?.id && referrals?.length === 0) {
+			fetchReferrals(user.id);
+		}
+	}, [user, referrals, fetchReferrals]);
+
+	// Обновление данных вручную
 	const handleRefresh = async () => {
-		if (pending) return;
+		if (pending || !user?.id) return;
 		setPending(true);
-		await fetch('/api/refresh');
-		setPending(false);
+		try {
+			await fetchReferrals(user.id);
+		} finally {
+			setPending(false);
+		}
 	};
 
-	useEffect(() => {
-		const fetchReferrals = async () => {
-			if (!user?.id) {
-				console.error('No userId found in context.');
-				setLoading(false);
-				return;
-			}
+	// Проверка состояния
+	if (loading && referrals?.length === 0) {
+		return <div className={styles.loading}>{t('friends.list.loading')}</div>;
+	}
 
-			try {
-				// console.log('Fetching referrals for userId:', user.id);
-				const response = await fetch(`/api/invitation?userId=${user.id}`);
-				if (!response.ok) {
-					throw new Error(`Failed to fetch: ${response.statusText}`);
-				}
-
-				const data: Referral[] = await response.json();
-				setReferrals(data);
-			} catch (error) {
-				console.error('Error fetching referrals:', error);
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		fetchReferrals();
-	}, [user]);
-
-	// if (loading) return <div>Loading...</div>;
+	if (!referrals || referrals.length === 0) {
+		return (
+			<div className={cn('container-style', styles.listNo)}>
+				{t('friends.list.no')}
+			</div>
+		);
+	}
 
 	return (
-		// Старый вариант:
-		// <div>
-		// 	<h1>Referrals</h1>
-		// 	{referrals.length === 0 ? (
-		// 		<div>No referrals found.</div>
-		// 	) : (
-		// 		<ul>
-		// 			{referrals.map((referral, index) => (
-		// 				<li key={index}>{referral.invitee?.username || 'Unknown user'}</li>
-		// 			))}
-		// 		</ul>
-		// 	)}
-		// </div>
 		<div className={styles.list}>
 			<div className={styles.listTop}>
 				<Title className={styles.listTitle}>
@@ -102,15 +76,16 @@ const ReferralsList: React.FC = () => {
 					onClick={handleRefresh}
 				/>
 			</div>
-			{referrals.map((i, index) => (
+			{referrals.map((referral, index) => (
 				<CardFriend
 					key={index}
-					title={constructName(i.firstName, i.lastName, i.username)}
+					title={constructName(
+						referral.firstName,
+						referral.lastName,
+						referral.username
+					)}
 				/>
 			))}
-			{referrals.length === 0 && (
-				<div className={cn('container-style', styles.listNo)}>{t('list.no')}</div>
-			)}
 		</div>
 	);
 };

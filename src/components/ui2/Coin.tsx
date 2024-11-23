@@ -8,7 +8,7 @@ type CoinProps = {
 };
 
 const Coin: React.FC<CoinProps> = ({
-  label = 'F',
+  label = 'MMes',
   className,
   type = 'default',
 }) => {
