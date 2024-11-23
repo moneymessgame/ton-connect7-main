@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 
 import RefLink from '@/components/shared/Referrals/RefLink';
 import ReferralsList from '@/components/shared/Referrals/ReferralsList';
@@ -12,8 +13,7 @@ import { Heading } from '@/components/shared/Heading';
 
 import styles from './referrals.module.scss';
 import { Button, ButtonGroup } from '@/components/shared/Button';
-import { toast } from 'sonner';
-import { Icon } from '@/components/shared/Icon';
+import { cn } from '@/lib/utils';
 
 const CardFriend = ({
 	title,
@@ -69,14 +69,13 @@ const Referrals: React.FC = () => {
 			/>
 			<ButtonGroup>
 				<Button
-					className={styles.invite}
+					className={cn('container-style', styles.invite)}
 					href={`https://t.me/share/url?url=${inviteLink}`}
 				>
 					{t('friends.list.invite_card')}
 				</Button>
-
 				<Button
-					className={styles.copy}
+					className={cn('container-style', styles.copy)}
 					icon={copied ? 'ph:check' : 'ph:copy-simple'}
 					type="secondary"
 					onClick={copy}
@@ -90,18 +89,6 @@ const Referrals: React.FC = () => {
 				/>
 				<ReferralsList />
 			</div>
-			{/* <div className={styles.list}>
-        <div className={styles.listTop}>
-          <Title className={styles.listTitle}>
-            {t("list.title")} <small>({invited.length})</small>
-          </Title>
-          <Icon icon="ph:arrows-clockwise" className={pending ? styles.rotating : ''} onClick={handleRefresh} />
-        </div>
-        {invited.map((i, index) => (
-          <CardFriend key={index} title={constructName(i.firstName, i.lastName, i.username)} isPremium={i.isPremium} />
-        ))}
-        {invited.length === 0 && <div className={styles.listNo}>{t("list.no")}</div>}
-      </div> */}
 		</Content>
 	);
 };

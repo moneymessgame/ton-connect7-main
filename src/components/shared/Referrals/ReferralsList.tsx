@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { RotateCw } from 'lucide-react';
+
 import { useUser } from '@/contexts/UserContext';
-
-import { Title } from '../Kit';
-import { Icon } from '@/components/shared/Icon';
-import { constructName } from '@/utils/utils';
-import { useReferralsStore } from '@/stores/referrals'; // Подключаем zustand store
-import styles from './referrals.module.scss';
+import { useReferralsStore } from '@/stores/referrals'; 
 import { cn } from '@/lib/utils';
+import { constructName } from '@/utils/utils';
+import { Title } from '../Kit';
+import styles from './referrals.module.scss';
 
-const CardFriend = ({ title }: { title: string }) => {
+const CardFriend = ({ title, photoUrl }: { title: string; photoUrl: string | null }) => {
 	return (
 		<div className={cn('container-style', styles.special)}>
-			<img src="/images/avatar.png" width={73} height={79} alt={title} />
+			<img
+				src={photoUrl || '/images/avatar.png'} // Если photoUrl отсутствует, используем аватар по умолчанию
+				width={73}
+				height={79}
+				alt={title}
+			/>
 			<div>
 				<h3>{title}</h3>
 				<span>
@@ -28,19 +33,16 @@ const ReferralsList: React.FC = () => {
 	const t = useTranslations();
 	const [pending, setPending] = useState(false);
 
-	// Zustand store
 	const referrals = useReferralsStore((state) => state.referrals);
 	const loading = useReferralsStore((state) => state.loading);
 	const fetchReferrals = useReferralsStore((state) => state.fetchReferrals);
 
-	// Загрузка данных при первом рендере, только если их нет
 	useEffect(() => {
 		if (user?.id && referrals?.length === 0) {
 			fetchReferrals(user.id);
 		}
 	}, [user, referrals, fetchReferrals]);
 
-	// Обновление данных вручную
 	const handleRefresh = async () => {
 		if (pending || !user?.id) return;
 		setPending(true);
@@ -51,7 +53,6 @@ const ReferralsList: React.FC = () => {
 		}
 	};
 
-	// Проверка состояния
 	if (loading && referrals?.length === 0) {
 		return <div className={styles.loading}>{t('friends.list.loading')}</div>;
 	}
@@ -68,10 +69,9 @@ const ReferralsList: React.FC = () => {
 		<div className={styles.list}>
 			<div className={styles.listTop}>
 				<Title className={styles.listTitle}>
-					{t('friends.list.title')} <small>({referrals.length})</small>
+					{t('friends.list.title')} <small>({referrals.length}):</small>
 				</Title>
-				<Icon
-					icon="ph:arrows-clockwise"
+				<RotateCw
 					className={pending ? styles.rotating : ''}
 					onClick={handleRefresh}
 				/>
@@ -84,6 +84,7 @@ const ReferralsList: React.FC = () => {
 						referral.lastName,
 						referral.username
 					)}
+					photoUrl={referral.photoUrl} // Передаем photoUrl
 				/>
 			))}
 		</div>
@@ -91,3 +92,4 @@ const ReferralsList: React.FC = () => {
 };
 
 export default ReferralsList;
+

@@ -30,7 +30,17 @@
 	}
 
 	img {
-		width: calc(40px + 24 * (100vw - 320px) / 1080);
+		--default-size: calc(32px + 4 * (100vw - 320px) / 1080);
+		width: var(--avatar-size, var(--default-size));
+		height: var(--avatar-size, var(--default-size));
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		width: 40px;
+		height: 40px;
+		background-color: #ddd;
 	}
 
 	h3 {
@@ -66,6 +76,7 @@
 	}
 
 	&Title {
+		padding-top: 2.5em;
 		color: var(--white);
 		font-size: 1rem;   
 		line-height: 1.5rem; 

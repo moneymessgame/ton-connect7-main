@@ -1,8 +1,5 @@
-// stores/referralsStore.ts
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
-
-import { useUser } from '@/contexts/UserContext';
 
 interface Invitee {
 	username: string | null;
@@ -13,6 +10,7 @@ type Referral = {
 	firstName: string | null;
 	lastName: string | null;
 	username: string | null;
+	photoUrl: string | null; 
 };
 
 interface ReferralsStore {
@@ -31,32 +29,33 @@ export const useReferralsStore = create<ReferralsStore>()(
 
 			fetchReferrals: async (userId: string) => {
 				set({ loading: true });
-			
+
 				try {
 					const response = await fetch(`/api/invitation?userId=${userId}`);
 					if (!response.ok) {
 						throw new Error(`Failed to fetch: ${response.statusText}`);
 					}
-			
+
 					const data = await response.json();
-			
-					// Обработка данных для извлечения информации о "invitee"
+
+					// Обработка данных для извлечения photoUrl
 					const referrals = data.map((item: any) => ({
 						firstName: item.invitee?.firstName || null,
 						lastName: item.invitee?.lastName || null,
 						username: item.invitee?.username || null,
+						photoUrl: item.invitee?.photoUrl || null,
 						invitee: {
 							username: item.invitee?.username || null,
 						},
 					}));
-			
+
 					set({ referrals, loading: false });
 				} catch (error) {
 					console.error('Error fetching referrals:', error);
 					set({ referrals: null, loading: false });
 				}
 			},
-					
+
 			setReferrals: (referrals) => set({ referrals }),
 			setLoading: (loading) => set({ loading }),
 		}),
