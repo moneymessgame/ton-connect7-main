@@ -12,6 +12,7 @@ import { CardSpecial } from '@/components/shared/InviteAFriend/CardSpecial';
 import { Content } from '@/components/shared/Kit';
 import { Heading } from '@/components/shared/Heading';
 import { Button, ButtonGroup } from '@/components/shared/Button';
+import Loader from '@/components/shared/common/Loader';
 import styles from './referrals.module.scss';
 
 interface ReferralsProps {
@@ -50,8 +51,10 @@ const Referrals: React.FC<ReferralsProps> = ({ initialReferrals }) => {
   };
 
   // Показываем загрузку, если пользователь еще не загрузился
-  if (loading) return <div>Loading...</div>;
-
+	if (loading) {
+		return <Loader />;
+	}
+	
   return (
     <Content>
       <Heading

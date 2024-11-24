@@ -1,0 +1,24 @@
+@import "../../../../styles/mixins";
+
+.loading {
+  @include flex(center, center); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
