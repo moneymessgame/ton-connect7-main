@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRightIcon } from 'lucide-react';
+import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import Coin from '@/components/ui2/Coin';
@@ -26,11 +27,19 @@ const MenuItem: React.FC<MenuItemProps> = ({
 			className="flex w-full cursor-pointer items-center gap-4 rounded-2xl p-4 transition duration-300 ease-in-out container-style"
 			onClick={onClick}
 		>
-			<img
+			<Image
 				src={image}
 				alt="Avatar"
 				className="size-10 shrink-0 rounded-full md:size-12"
+				fill
+				sizes="(max-width: 768px) 40px, 50px"
+				style={{ objectFit: 'cover' }}
 			/>
+			{/* <img
+				src={image}
+				alt="Avatar"
+				className="size-10 shrink-0 rounded-full md:size-12"
+			/> */}
 			<div className="flex flex-1 items-center justify-between overflow-hidden">
 				<div
 					className="flex max-w-[200px] flex-1 flex-col gap-1 overflow-hidden"

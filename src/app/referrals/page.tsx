@@ -3,37 +3,16 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
+import Image from 'next/image';
 
-import RefLink from '@/components/shared/Referrals/RefLink';
-import ReferralsList from '@/components/shared/Referrals/ReferralsList';
+import { cn } from '@/lib/utils';
 import { useUser } from '@/contexts/UserContext';
+import ReferralsList from '@/components/shared/Referrals/ReferralsList';
 import { CardSpecial } from '@/components/shared/InviteAFriend/CardSpecial';
 import { Content, Title } from '@/components/shared/Kit';
 import { Heading } from '@/components/shared/Heading';
-
-import styles from './referrals.module.scss';
 import { Button, ButtonGroup } from '@/components/shared/Button';
-import { cn } from '@/lib/utils';
-
-const CardFriend = ({
-	title,
-	isPremium,
-}: {
-	title: string;
-	isPremium: boolean;
-}) => {
-	return (
-		<div className={styles.special}>
-			<img src="/images/avatar.png" width={73} height={79} alt={title} />
-			<div>
-				<h3>{title}</h3>
-				<span>
-					<strong>+10000</strong>
-				</span>
-			</div>
-		</div>
-	);
-};
+import styles from './referrals.module.scss';
 
 const Referrals: React.FC = () => {
 	const t = useTranslations();
@@ -58,7 +37,7 @@ const Referrals: React.FC = () => {
 				title={t('friends.title')}
 				txt={t('friends.txt')}
 				top={
-					<img
+					<Image
 						src="/gift.png"
 						width={732}
 						height={796}

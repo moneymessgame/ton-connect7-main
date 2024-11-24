@@ -1,6 +1,7 @@
 import React from 'react';
-import { ChevronRightIcon } from 'lucide-react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { ChevronRightIcon } from 'lucide-react';
 
 import Coin from './Coin';
 
@@ -22,11 +23,19 @@ const MItem: React.FC<MItemProps> = ({ image, reward, title, onClick }) => {
 			style={{ backgroundColor }}
 			onClick={onClick}
 		>
-			<img
+			<Image
 				src={image}
 				alt="Avatar"
 				className="size-10 shrink-0 rounded-full md:size-12"
+				fill
+				sizes="(max-width: 768px) 40px, 50px"
+				style={{ objectFit: 'cover' }}
 			/>
+			{/* <img
+				src={image}
+				alt="Avatar"
+				className="size-10 shrink-0 rounded-full md:size-12"
+			/> */}
 			<div className="flex flex-1 items-center justify-between overflow-hidden">
 				<div
 					className="flex max-w-[200px] flex-1 flex-col gap-1 overflow-hidden"

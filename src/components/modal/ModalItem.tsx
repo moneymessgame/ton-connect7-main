@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { ChevronRightIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -22,7 +23,7 @@ const ModalItem: React.FC<MItemProps> = ({ image, reward, title, onClick }) => {
 			style={{ backgroundColor }}
 			onClick={onClick}
 		>
-			<img
+			<Image
 				src={image}
 				alt="Avatar"
 				className="size-10 shrink-0 rounded-full md:size-12"

@@ -8,16 +8,12 @@ import { cn } from '@/lib/utils';
 import { constructName } from '@/utils/utils';
 import { Title } from '../Kit';
 import styles from './referrals.module.scss';
+import Image from 'next/image';
 
 const CardFriend = ({ title, photoUrl }: { title: string; photoUrl: string | null }) => {
 	return (
 		<div className={cn('container-style', styles.special)}>
-			<img
-				src={photoUrl || '/images/avatar.png'} // Если photoUrl отсутствует, используем аватар по умолчанию
-				width={73}
-				height={79}
-				alt={title}
-			/>
+			<Image src={photoUrl || '/images/avatar.png'} width={73} height={79} alt={title} priority />
 			<div>
 				<h3>{title}</h3>
 				<span>
@@ -84,7 +80,7 @@ const ReferralsList: React.FC = () => {
 						referral.lastName,
 						referral.username
 					)}
-					photoUrl={referral.photoUrl} // Передаем photoUrl
+					photoUrl={referral.photoUrl}
 				/>
 			))}
 		</div>
