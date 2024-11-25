@@ -8,7 +8,7 @@
 
 // rotating animation when class .rotating is added
 .rotating {
-	animation: rotate 1s linear infinite;
+  animation: rotate 1s linear;
 }
 
 @keyframes rotate {

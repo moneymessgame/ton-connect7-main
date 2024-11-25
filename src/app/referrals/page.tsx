@@ -51,9 +51,9 @@ const Referrals: React.FC<ReferralsProps> = ({ initialReferrals }) => {
   };
 
   // Показываем загрузку, если пользователь еще не загрузился
-	if (loading) {
-		return <Loader />;
-	}
+	// if (loading) {
+	// 	return <Loader />;
+	// }
 	
   return (
     <Content>
