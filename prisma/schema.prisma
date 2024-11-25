@@ -155,7 +155,6 @@ model Rating {
   clubs         Club[]
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
-
 }
 
 model Club {
@@ -195,7 +194,6 @@ model Role {
   url   String
   team  String
   value Json
-
   player Player[]
 }
 
@@ -210,10 +208,21 @@ model Result {
 
 model Character {
   id        String  @id @default(cuid())
-  firstname String
-  lastname  String
-  nickname  String
+  number    String
+  firstName String?
+  lastName  String?
+  nickname  String?
   src       String
-  rarity    String
-  
+  url       String
+  rarityId  String
+  rarity    Rarity  @relation(fields: [rarityId], references: [id])
+  value     Json
 }
+
+model Rarity {
+  id        String  @id @default(cuid())
+  name      String
+  character Character[]
+  value     Json
+}
+

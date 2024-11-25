@@ -3,6 +3,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+
+  await prisma.character.deleteMany();
+  
       // Добавление ролей
   // const roles = [
   //   { text: 'civilian',
