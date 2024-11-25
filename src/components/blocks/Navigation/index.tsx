@@ -9,11 +9,10 @@ import styles from './Navigation.module.scss';
 export default function Navigation() {
 	const pathname = usePathname();
 
-	// Массив для навигации с маршрутом, компонентом иконки и названием
 	const navItems = [
 		{ href: '/', icon: Home, label: 'Home' },
 		{ href: '/tracker', icon: Timer, label: 'Tracker' },
-		{ href: '/seed', icon: Timer, label: 'test' },
+		{ href: '/seed', icon: Timer, label: 'Seed' },
 		{ href: '/characters', icon: Timer, label: 'Characters' },
 		{ href: '/referrals', icon: UserPlus, label: 'Referrals' },
 		{ href: '/socials', icon: PanelBottomOpen, label: 'Socials' },
@@ -58,7 +57,7 @@ export default function Navigation() {
 								}`}
 							/>
 						</div>
-						<span className="text-xs pb-4">{item.label}</span>
+						<span className="text-xs pb-5">{item.label}</span>
 					</Link>
 				);
 			})}

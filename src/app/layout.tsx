@@ -1,32 +1,24 @@
 import { Viewport } from 'next';
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Inter } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import { Montserrat } from 'next/font/google';
-
 // import { GoogleAnalytics } from '@next/third-parties/google';
 
-import styles from './layout.module.scss';
-import '@/styles/globals.scss';
-
+import { ModalProvider } from '@/contexts/ModalContext';
+import { UserProvider } from '@/contexts/UserContext';
 import LangProvider from '@/components/providers/lang-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import TmaProvider from '@/components/providers/tma-provider';
 import TonProvider from '@/components/providers/ton-provider';
-
-import { ModalProvider } from '@/contexts/ModalContext';
-import { UserProvider } from '@/contexts/UserContext';
-
-import NextTopLoader from 'nextjs-toploader';
-import Loader from '@/components/blocks/Loader';
-
+import Loader from '@/components/shared/common/Loader';
 import Menu from '@/components/blocks/Menu';
 import Navigation from '@/components/blocks/Navigation';
-
 import { NoMobile } from '@/components/blocks/NoMobile';
-
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import styles from './layout.module.scss';
+import '@/styles/globals.scss';
 
 const font = Montserrat({ subsets: ['cyrillic-ext'] });
 

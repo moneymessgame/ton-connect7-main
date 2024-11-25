@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import Loader from '@/components/shared/common/Loader';
 import { useUser } from '@/contexts/UserContext';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -13,7 +14,7 @@ const RefLink: React.FC = () => {
 	const { toast } = useToast();
 
 	if (loading) {
-		return <p>Loading...</p>;
+		return <Loader />;
 	}
 
 	if (!user) {

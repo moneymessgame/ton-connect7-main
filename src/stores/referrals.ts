@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface Invitee {
@@ -29,20 +29,20 @@ export const useReferralsStore = create<ReferralsStore>()(
 
 			fetchReferrals: async (userId: string) => {
 				set({ loading: true });
-			
+
 				const cachedReferrals = get().referrals;
 				if (cachedReferrals && cachedReferrals.length > 0) {
 					// Данные уже есть, пропускаем запрос
 					set({ loading: false });
 					return;
 				}
-			
+
 				try {
 					const response = await fetch(`/api/invitation?userId=${userId}`);
 					if (!response.ok) {
 						throw new Error(`Failed to fetch: ${response.statusText}`);
 					}
-			
+
 					const data = await response.json();
 					const referrals = data.map((item: any) => ({
 						firstName: item.invitee?.firstName || null,
@@ -53,14 +53,13 @@ export const useReferralsStore = create<ReferralsStore>()(
 							username: item.invitee?.username || null,
 						},
 					}));
-			
+
 					set({ referrals, loading: false });
 				} catch (error) {
 					console.error('Error fetching referrals:', error);
 					set({ referrals: null, loading: false });
 				}
 			},
-			
 
 			setReferrals: (referrals) => set({ referrals }),
 			setLoading: (loading) => set({ loading }),

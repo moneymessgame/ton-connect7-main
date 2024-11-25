@@ -5,7 +5,7 @@ interface LoaderProps {
   text?: string;
 }
 
-const Loader: React.FC<LoaderProps> = ({ text = 'Loading...' }) => {
+const Loader: React.FC<LoaderProps> = () => {
   return (
     // <div className="flex w-full h-screen items-center justify-center ">
     //   <div className="flex flex-col items-center">

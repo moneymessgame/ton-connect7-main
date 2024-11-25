@@ -29,7 +29,7 @@ export default function Menu() {
 
     return (
         <header className={cn('h-18 bg-background/40 backdrop-blur-[4px] shadow-2xl', styles.menu)}>
-            <div>1</div>
+            <div></div>
             <div className={styles.right}>
                 {/* <Exchange />*/}
 								<User />

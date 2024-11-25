@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import Dropdown from '@/components/ui2/Dropdown';
 import { Avatar } from '../Avatar';
 import styles from './User.module.scss';
+import Loader from '@/components/blocks/Loader';
 
 export const User = () => {
   const { user, fetchUser } = useUserStore();
@@ -20,7 +21,7 @@ export const User = () => {
     }
   }, [fetchUser, initData, user]);
 
-  if (!user) return <div>Loading</div>;
+  if (!user) return  <Loader />;
 
   const { username, firstName, lastName, photoUrl } = user;
   const name = constructName(firstName, lastName, username);

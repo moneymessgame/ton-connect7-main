@@ -1,13 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { X } from 'lucide-react';
 
 import { useUser } from '@/contexts/UserContext';
-import { ChallengeWithStatus } from '@/utils/challenges';
-import { X } from 'lucide-react';
+import { useSocialsStore } from '@/stores/socials'; 
+import Loader from '@/components/shared/common/Loader';
 import CardWithMenu from '@/components/ui2/CardWithMenu';
-
 import {
 	Drawer,
 	DrawerClose,
@@ -16,60 +16,48 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 } from '@/components/ui/drawer';
+import { ChallengeWithStatus } from '@/utils/challenges';
 import ChallengeModal from './ChallengeModal';
 
 const SubscribeChannelsCard: React.FC = () => {
 	const { user } = useUser();
-	const [challenges, setChallenges] = useState<ChallengeWithStatus[]>([]);
-	const [selectedChallenge, setSelectedChallenge] =
-		useState<ChallengeWithStatus | null>(null);
+	const { challenges, loading, fetchChallenges, updateChallengeStatus } = useSocialsStore();
+	const [selectedChallenge, setSelectedChallenge] = useState<ChallengeWithStatus | null>(null); 
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const t = useTranslations();
 
+	// Загружаем задачи только если они еще не загружены
 	useEffect(() => {
-		const fetchChallenges = async () => {
-			try {
-				const response = await fetch(`/api/challenges/${user!.id}`);
-				const data = await response.json();
-				if (data.challenges) {
-					setChallenges(data.challenges);
-				} else {
-					console.error(data.message);
-				}
-			} catch (error) {
-				console.error('Error fetching challenges:', error);
-			}
-		};
-
-		if (user) {
-			fetchChallenges();
+		if (user && !challenges) {
+			fetchChallenges(user!.id);
 		}
-	}, [user]);
+	}, [user, challenges, fetchChallenges]);
 
-	const updateChallengeStatus = (challengeId: string) => {
-		setChallenges((prevChallenges) =>
-			prevChallenges.map((challenge) =>
-				challenge.id === challengeId
-					? { ...challenge, isCompleted: true }
-					: challenge
-			)
-		);
+	// Обновление статуса задачи
+	const handleChallengeCompletion = (challengeId: string) => {
+		updateChallengeStatus(challengeId);
 	};
 
+	// Открытие модального окна
 	const handleDrawerOpen = (challenge: ChallengeWithStatus) => {
 		setSelectedChallenge(challenge);
 		setIsDrawerOpen(true);
 	};
 
-	const menuItems = challenges.map((challenge) => ({
+	if (loading) {
+		return <Loader />;
+	}
+
+	const menuItems = challenges?.map((challenge) => ({
 		image: challenge.image,
 		title: t(challenge.description),
 		reward: challenge.isCompleted
 			? t('subscribe_channels_card.completed')
 			: `+${challenge.reward}`,
 		onClick: () => handleDrawerOpen(challenge),
-	}));
+	})) || [];
 
+	// Рендеринг заголовка и подзаголовка
 	const renderContent = () => (
 		<div className="text-center mb-5">
 			<p className="text-2xl font-black mb-1">
@@ -102,9 +90,9 @@ const SubscribeChannelsCard: React.FC = () => {
 							reward={selectedChallenge.reward}
 							refLink={selectedChallenge.refLink}
 							userId={user!.id}
-							challengeId={selectedChallenge.id}
+							challengeId={selectedChallenge.id} 
 							telegramId={user!.telegramId.toString()}
-							onSuccess={() => updateChallengeStatus(selectedChallenge.id)}
+							onSuccess={() => handleChallengeCompletion(selectedChallenge.id)}
 							isCompleted={selectedChallenge.isCompleted}
 						/>
 					)}
